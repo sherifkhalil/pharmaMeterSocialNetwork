@@ -7,6 +7,15 @@
 <link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
+
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+<link rel="stylesheet" href="{{ asset('css/font-awesome.css')}}">
+<link rel="stylesheet" href="{{ asset('css/templatemo_style.css')}}">
+<link rel="stylesheet" href="{{ asset('css/templatemo_misc.css')}}">
+<link rel="stylesheet" href="{{ asset('css/flexslider.css')}}">
+<link rel="stylesheet" href="{{ asset('css/testimonails-slider.css')}}">
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Voguish Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -14,11 +23,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="publiclication/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'> -->
-<script src="{{ asset('js/jquery-1.12.3.js')}}"></script>
-<script src="{{ asset('js/jquery.min.js')}}"></script>
-<script src="{{ asset('js/bootstrap.js')}}"></script>
-<script src="{{ asset('js/bootstrap.min.js')}}"></script>
-
+<script src="{{ asset('js/vendor/jquery-1.11.0.min.js')}}"></script>
+<script src="{{ asset('js/vendor/jquery.gmap3.min.js')}}"></script>
+<script src="{{ asset('js/plugins.js')}}"></script>
+<script src="{{ asset('js/main.js')}}"></script>
 <script src="{{ asset('js/responsiveslides.min.js')}}"></script>
 <script>
     $(function () {
@@ -35,52 +43,63 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     
 </head>
 <body>
-<div class="header">
-        <div class="container">
-            <div class="logo">
-                <a href="/"><img src="{{ asset('images/logo.png')}}" class="img-responsive" alt=""></a>
-            </div>
-            
-                <div class="head-nav">
-                    <span class="menu"> </span>
-                        <ul class="cl-effect-1">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about">About Us</a></li>
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            @if (Auth::user()->isAdmin())
-                                <li><a href="/admin">Controle Panal</a></li>
-                            @endif
-                            @if (Auth::user()->section != Null)
-                                <li><a href="/posts/add">Add Post</a></li>
-                            @endif
-                            
-                            <li><a href="/users/{{ Auth::user()->id }}" > <img width="30px" height="20px" src="{{ Auth::user()->image }}" alt=""> {{ Auth::user()->name }} </a>
-                            <!-- {{ Auth::user()->name }} -->
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                               
-                        @endif
-                            
-                            <div class="clearfix"></div>
-                        </ul>
+<header>
+                <div id="top-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="home-account">
+                                    <a href="#">Home</a>
+                                    <a href="#">My account</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                        <!-- script-for-nav -->
-                            <script>
-                                $( "span.menu" ).click(function() {
-                                  $( ".head-nav ul" ).slideToggle(300, function() {
-                                    // Animation complete.
-                                  });
-                                });
-                            </script>
-                        <!-- script-for-nav -->
-                
-                        
-            
-                    <div class="clearfix"> </div>
-        </div>
-    </div>
+                <div id="main-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="logo">
+                                    <h3 id="logo"> Pharma </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="main-menu">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/about">About Us</a></li>
+                                    @if (Auth::guest())
+                                        <li><a href="{{ url('/login') }}">Login</a>
+                                        </li>
+                                        <li><a href="{{ url('/register') }}">Register</a></li>
+                                    @else
+                                        
+                                        <li><a href="/users/{{ Auth::user()->id }}" > <img width="30px" height="20px" src="{{ Auth::user()->image }}" alt=""> {{ Auth::user()->name }} </a>
+                                        <!-- {{ Auth::user()->name }} -->
+                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                           
+                                    @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="search-box">  
+                                    <form name="search_form" method="get" class="search_form">
+                                        <input id="search" type="text" />
+                                        <input type="submit" id="search-button" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
 <!-- header -->
     @yield('content')
 
@@ -116,7 +135,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             
             <div class="clearfix"> </div>
             <div class="copyright">
-                <p>Copyrights © 2016 ITI All rights reserved | Template by <a href="http://facebook.com/AhmedSalama51/">Ahmed Salama</a></p>
+                <div class="bottom-footer">
+                        <p>
+                            <span>Copyright © 2084 <a href="#">BusinessMonk</a> 
+                            | Design: <a rel="nofollow" href="#" target="_parent"><span class="blue">Pharmateam</span><span class="green">ITI</span></a></span>
+                        </p>
+                </div>
             </div>
         </div>
     </div>
