@@ -74,15 +74,31 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
+#overload login of Auth
     public function login(Request $request){
-        if (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
-                return redirect('/');
+        #for admins table
+        if (\Auth::guard('admin')->attempt(['email'=> $request->email, 'password' => $request->password])) {
+          return redirect('/admin');
+        }
+        elseif (\Auth::guard('admin')->attempt(['name'=> $request->email, 'password' => $request->password])) {
+          return redirect('/admin');
+        }
+        #for users table
+        elseif (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
+/*          if(\Auth::user()->isAdmin()){
+
+                return redirect('/admin');
+            }*/
+            return redirect('/');
         } 
 
         elseif (\Auth::attempt(['email'=> $request->email, 'password' => $request->password])) {
 
-                return redirect('/'); 
+            /*if(\Auth::user()->isAdmin()){
+
+                return redirect('/admin');
+            }*/
+            return redirect('/'); 
         } 
 
 

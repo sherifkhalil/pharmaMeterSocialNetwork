@@ -45,6 +45,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+/*    public function isAdmin()
+    {
+         return $this->admin;
+    }*/ 
+
+
     public function request()
     {
         return $this->hasOne('App\Request');
@@ -61,3 +68,4 @@ class User extends Authenticatable
 
 
 }
+

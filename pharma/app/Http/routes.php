@@ -29,11 +29,12 @@
 		// });
 		Route::auth();
 		Route::get('/', 'HomeController@index');
-
+		Route::get('/admin','AdminController@index');
 		//post routes ...
 		Route::get('posts/{post}', 'PostsController@show');
 		Route::post('posts/add', 'PostsController@store');
 		Route::put('edit/{post}', 'PostsController@append');
 		Route::get('delete/{post}', 'PostsController@destroy');
 
- }); //end of web
+ }); 
+
