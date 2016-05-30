@@ -80,6 +80,9 @@ class AuthController extends Controller
         if (\Auth::guard('admin')->attempt(['email'=> $request->email, 'password' => $request->password])) {
           return redirect('/admin');
         }
+        elseif (\Auth::guard('admin')->attempt(['name'=> $request->email, 'password' => $request->password])) {
+          return redirect('/admin');
+        }
         #for users table
         elseif (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
 /*          if(\Auth::user()->isAdmin()){

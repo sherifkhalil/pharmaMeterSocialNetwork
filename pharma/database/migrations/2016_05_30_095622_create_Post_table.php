@@ -1,9 +1,9 @@
-d<?php
+<?php
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonalDataTable extends Migration
+class CreatePostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,14 @@ class CreatePersonalDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('personal_data', function (Blueprint $table) {
-            $table->increments('id');
+       Schema::create('posts', function (Blueprint $table) {
+            $table->increments('id');           
+            $table->string('content')->unique();
             $table->string('image');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('degree');
-            $table->string('company');
+            $table->string('user_token');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ class CreatePersonalDataTable extends Migration
      */
     public function down()
     {
-         Schema::drop('personal_data');
+       Schema::drop('posts');
     }
 }

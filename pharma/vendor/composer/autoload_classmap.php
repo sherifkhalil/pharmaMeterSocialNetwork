@@ -18,10 +18,11 @@ return array(
     'Cartalyst\\Sentry\\Users\\UserExistsException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
     'Cartalyst\\Sentry\\Users\\UserNotActivatedException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
     'Cartalyst\\Sentry\\Users\\UserNotFoundException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
-    'Cartalyst\\Sentry\\Users\\WrongPasswordException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
+
     'CreateAdminsTable' => $baseDir . '/database/migrations/2016_05_30_180139_create_admins_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePersonalDataTable' => $baseDir . '/database/migrations/2016_05_29_140319_create_personalData_table.php',
+    'CreatePostTable' => $baseDir . '/database/migrations/2016_05_30_095622_create_Post_table.php',
     'CreateRequestTable' => $baseDir . '/database/migrations/2016_05_29_140745_create_request_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2016_05_29_140237_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

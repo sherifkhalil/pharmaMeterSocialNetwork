@@ -2,6 +2,7 @@
 
 namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Request ;
 // use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 // use Illuminate\Auth\Authenticatable;
 // use Illuminate\Auth\Passwords\CanResetPassword;
@@ -44,8 +45,27 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
 /*    public function isAdmin()
     {
          return $this->admin;
     }*/ 
+
+
+    public function request()
+    {
+        return $this->hasOne('App\Request');
+    }
+    public function personal()
+    {
+        return $this->hasOne('App\Personal_data','user_id');
+    }
+    public function posts()
+    {
+        return $this->hasManny('App\Post');
+    }
+
+
+
 }
+
