@@ -11,10 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
 
-Route::auth();
+ Route::group(['middleware' => ['web']], function () {
 
-Route::get('/home', 'HomeController@index');
+		// Route::get('/', function () {
+		//     return view('index');
+		// });
+		Route::auth();
+		Route::get('/', 'HomeController@index');
+
+		//post routes ...
+		Route::get('posts/{post}', 'PostsController@show');
+		Route::post('posts/add', 'PostsController@store');
+		Route::put('edit/{post}', 'PostsController@append');
+		Route::get('delete/{post}', 'PostsController@destroy');
+
+ }); //end of web

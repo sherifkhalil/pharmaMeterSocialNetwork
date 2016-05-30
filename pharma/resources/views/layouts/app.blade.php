@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>PHarmaMeter Social Network </title>
-        <link href="{{ asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+        <link href="{{ asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' /><link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
         <script src="{{ asset('js/jquery.min.js')}}"></script>
          <!-- Custom Theme files -->
         <link href="{{ asset('css/style.css')}}" rel='stylesheet' type='text/css' />
@@ -28,6 +28,7 @@
                 namespace: "callbacks",
                 pager: true,
               });
+              $('.error').delay(5000).fadeOut('slow');
             });
             
           </script>
@@ -60,7 +61,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li><a href="/users/{{ Auth::user()->id }}" >
-                                <img width="30px" height="20px" src="{{ Auth::user()->image }}" alt=""> {{ Auth::user()->name }} </a>
+                                <img width="30px" height="20px" src="{{ Auth::user()->personal->image }}" alt=""> {{ Auth::user()->name }} </a>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                                
                         @endif
