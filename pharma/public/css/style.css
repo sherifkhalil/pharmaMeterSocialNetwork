@@ -1643,6 +1643,7 @@ ul.pagenation li a:hover{
 	}
 	.blog-artical {
 		margin-bottom: 1em;
+		border-top: 2px solid #19b5fe;
 	}
 	.team-grids-caption-left {
 		float: none;
@@ -2019,6 +2020,11 @@ ul.pagenation li a:hover{
 	}
 	.blog-artical-info-text p {
 		margin: 0.5em 0;
+		
+	}
+	.blog-artical-info-comment {
+		border-top: 2px solid #19b5fe;
+		padding:0px;
 	}
 }
 .blog > .container-fluied
@@ -2066,7 +2072,15 @@ ul.pagenation li a:hover{
 	min-height:163px;
 
 }
-.addpost textarea
+.addcomment
+{
+	min-height:153px;
+	width:110%;
+	margin-left:-30px;
+
+
+}
+.addpost textarea,.addcomment textarea
 {
 	/* width:85%; */
 	margin-bottom:10px;
@@ -2080,7 +2094,7 @@ moz-appearance:none;
 ::-webkit-scrollbar { 
     display: none; 
 }
-.addpost textarea:focus{
+.addpost textarea:focus,.addcomment textarea:focus{
     outline: 0;
 }
 .addpost img
@@ -2101,7 +2115,7 @@ moz-appearance:none;
 hr
 {
 	width:95%;
-	border-top:1px solid #ccc;
+	border-top:1px solid #A6E1EC;
 	height:2px;
 	margin-top:1px;
 	margin-bottom:5px;	
@@ -2153,4 +2167,12 @@ textarea { border: none; }
 	text-align:center;
 	font-size:28px;
 	color:#ccc;
+}
+.hr
+{
+	border-bottom: 1px solid #ccc;
+	width:105%;
+	height:1px;
+	margin-bottom:10px;
+	text-align:center;
 }
