@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Jenssegers\MongoDB\Model;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 
 class AuthController extends Controller
@@ -72,5 +73,24 @@ class AuthController extends Controller
             'created_at' => Carbon::now(),
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function login(Request $request){
+        if (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
+                return redirect('/');
+        } 
+
+        elseif (\Auth::attempt(['email'=> $request->email, 'password' => $request->password])) {
+
+                return redirect('/'); 
+        } 
+
+
+        else {
+                #echo "fail!";
+                return redirect('/login')->withErrors([
+                'errors' => 'These credentials do not match our records.',
+            ]); 
+        }
     }
 }

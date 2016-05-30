@@ -14,9 +14,10 @@ class AddNameToUsersTable extends Migration
     {
        Schema::table('users', function($table)
         {
-            $table->string('id_number');
+            $table->string('id_number')->unique();
             $table->string('name');
             $table->string('password');
+
         });
     }
 
