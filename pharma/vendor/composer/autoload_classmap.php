@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddNameToUsersTable' => $baseDir . '/database/migrations/2016_05_29_141359_add_name_to_users_table.php',
+    'AddUseridFieldToRequestsTable' => $baseDir . '/database/migrations/2016_05_30_105050_add_userid_field_to_requests_table.php',
     'Cartalyst\\Sentry\\Groups\\GroupExistsException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\GroupNotFoundException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\NameRequiredException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
@@ -18,10 +19,10 @@ return array(
     'Cartalyst\\Sentry\\Users\\UserExistsException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
     'Cartalyst\\Sentry\\Users\\UserNotActivatedException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
     'Cartalyst\\Sentry\\Users\\UserNotFoundException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
-
+    'Cartalyst\\Sentry\\Users\\WrongPasswordException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
     'CreateAdminsTable' => $baseDir . '/database/migrations/2016_05_30_180139_create_admins_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreatePersonalDataTable' => $baseDir . '/database/migrations/2016_05_29_140319_create_personalData_table.php',
+    'CreatePersonalDatasTable' => $baseDir . '/database/migrations/2016_05_31_134628_create_personal_datas_table.php',
     'CreatePostTable' => $baseDir . '/database/migrations/2016_05_30_095622_create_Post_table.php',
     'CreateRequestTable' => $baseDir . '/database/migrations/2016_05_29_140745_create_request_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2016_05_29_140237_create_users_table.php',

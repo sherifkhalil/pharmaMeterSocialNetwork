@@ -3,7 +3,7 @@
 
 
 
-@section('content')
+
  <div id="latest-blog">
     <div class="container">  
         {{-- posts --}}
@@ -26,9 +26,20 @@
                         </div>
 
                     </div>
+                    
+                      @if(Auth::user()->personal->image =='')
+                      <img src="{{ asset('images/profilepic/1.png')}}" width="150px" height="150px" class="img-circle"/> 
+                      @else
+                      <img src="{{ asset('images/profilepic').'/'.Auth::user()->personal->image }}" width="150px" height="150px" class="img-circle"/> 
+                      
+                    @endif
+                    <b><a href="/users/{{Auth::user()->personal}}/editprofile">Edit profile </a></b>
                     <div class="blog-artical">
+
                        
                         <div class="blog-artical-info">
+
+
                         <label class="col-md-4 control-label">Username : </label>
                             {{Auth::user()->name}}
 
@@ -122,7 +133,7 @@
             
     </div>
             
-@endsection
+
 
 
 
