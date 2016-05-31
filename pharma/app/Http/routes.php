@@ -35,6 +35,7 @@
 		Route::post('posts/add', 'PostsController@store');
 		Route::put('edit/{post}', 'PostsController@append');
 		Route::get('delete/{post}', 'PostsController@destroy');
+		Route::get('/users/{User}', 'UsersController@profile');
 
  }); 
 

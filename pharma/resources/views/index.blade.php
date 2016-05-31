@@ -41,7 +41,7 @@
                                         </div>
                                         <hr>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" alt="">
+                                            <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="" alt="">
                                             <textarea  class="col-md-10 col-sm-10 col-xs-7" name='content'  placeholder="add new post"></textarea>
                                         </div>
                                         <hr>   
@@ -59,7 +59,7 @@
                             <div class="blog-artical">
                             <div class="blog-artical-basicinfo">
                                 <ul>
-                                 <li class="categoery"><img src="{{$post->user->personal->image}}"></li>
+                                 <li class="categoery"><img src=""></li>
                                     <li class="post-date"><p><span> {{$post->created_at->format('d')}}</span><label>{{$post->created_at->format('M,Y')}}</label></p></li>
                                     <li class="artlick"><a href="#"><span> </span> <i>90</i></a></li>
                                     <li class="art-comment"><a href="#"><span> </span> <i>50</i></a></li>
