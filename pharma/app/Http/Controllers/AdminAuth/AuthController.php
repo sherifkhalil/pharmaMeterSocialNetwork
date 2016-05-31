@@ -32,7 +32,9 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    #protected $redirectTo = '/';
+    protected $redirectTo = '/admin';
+    protected $guard = 'admin';
 
     /**
      * Create a new authentication controller instance.
@@ -41,11 +43,24 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware('admin');
+        #$this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
-/*$count = App\Flight::where('active', 1)->count();
 
-$max = App\Flight::where('active', 1)->max('price');*/
+
+public function showLoginForm()
+{
+    if (view()->exists('auth.authenticate')) {
+        return view('auth.authenticate');
+    }
+
+    return view('admin.auth.login');
+}
+public function showRegistrationForm()
+{
+    return view('admin.auth.register');
+} 
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -77,35 +92,30 @@ $max = App\Flight::where('active', 1)->max('price');*/
         ]);
     }
 #overload login of Auth
-    public function login(Request $request){
+/*    public function login(Request $request){
         #for admins table
-/*        if (\Auth::guard('admin')->attempt(['email'=> $request->email, 'password' => $request->password])) {
-     #     AuthSession session = this.GetSession();
+        if (\Auth::guard('admin')->attempt(['email'=> $request->email, 'password' => $request->password])) {
           return redirect('/admin');
         }
         elseif (\Auth::guard('admin')->attempt(['name'=> $request->email, 'password' => $request->password])) {
           return redirect('/admin');
-        }*/
+        }
         #for users table
-        if (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
+        elseif (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
           if(\Auth::user()->isAdmin()){
 
                 return redirect('/admin');
             }
-            else{
             return redirect('/');
-        }
         } 
 
         elseif (\Auth::attempt(['email'=> $request->email, 'password' => $request->password])) {
 
-            if(\Auth::user()->isAdmin()){
+            /*if(\Auth::user()->isAdmin()){
 
                 return redirect('/admin');
-            }
-            else{
+            }*/
             return redirect('/'); 
-        }
         } 
 
 
@@ -115,5 +125,5 @@ $max = App\Flight::where('active', 1)->max('price');*/
                 'errors' => 'These credentials do not match our records.',
             ]); 
         }
-    }
+    }*/
 }
