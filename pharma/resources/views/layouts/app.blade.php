@@ -61,7 +61,10 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li><a href="/users/{{ Auth::user()->id }}" >
-                                <img width="30px" height="20px" src="" alt=""> {{ Auth::user()->name }} </a>
+                                <img width="30px" height="20px" src="{{ Auth::user()->personal->image }}" alt="">{{ Auth::user()->name }} </a>
+                            @if(Auth::user()->isAdmin())
+                            <li><a href="#">Dashboard</a>
+                            @endif
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                                
                         @endif
