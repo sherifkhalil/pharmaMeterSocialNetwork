@@ -31,7 +31,7 @@ class PostsController extends Controller
 		else
 		{
 			$errors = "this page isnt avalible!!";	
-			return view('errors.404',compact('errors'));
+			Redirect::to('/errors/404')->with('errors');
 		}
 			
 
@@ -46,8 +46,8 @@ class PostsController extends Controller
 		if($validator->fails())
 		{// validator dosn't work
 			$errors = $validator->messages();
-			$posts = Post::orderBy('created_at','DESC')->get();
-			return Redirect::to('/')->with('posts,errors');
+			// $posts = Post::orderBy('created_at','DESC')->get();
+			return Redirect::to('/')->with('errors');
 			// return "error";
 		}
 		else
@@ -71,8 +71,7 @@ class PostsController extends Controller
 
 				$post->save();
 				$done = 'post add succssufully';
-				$posts = Post::orderBy('created_at','DESC')->get();
-			    return Redirect::to('/')->with('posts,done');
+			    return Redirect::to('/')->with('done');
 			    // return "done";
 			}
 			else 
@@ -81,9 +80,31 @@ class PostsController extends Controller
 				$post->save();
 				$done = 'post add succssufully';
 				$posts = Post::orderBy('created_at','DESC')->get();
-			    return Redirect::to('/')->with('posts,done');
+			    return Redirect::to('/')->with('done');
 			    // return "done without image";
 			}
 		}//end of valid validator
-	}
+	}// end of store action
+	public function destroy($id){
+		$post = Post::find($id);
+		if (Auth::user() && Auth::user()->id == $post->user_id && Auth::user()->token == $post->user_token)
+		{
+			if(sizeof($post) > 0)
+			{
+				$post->delete();
+				$done = 'post deleted succssufully..';
+				return Redirect::to('/')->with('done');
+			}
+			else
+			{
+				$errors = "something went wrong, please try again after while..";
+				Redirect::to('/errors/404')->with('errors');
+			}
+		}
+		else
+		{
+			$errors = "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!";
+			Redirect::to('/errors/404')->with('errors');
+		}
+	}//end of destroy action
 }
