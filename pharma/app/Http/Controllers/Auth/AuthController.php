@@ -78,15 +78,7 @@ $max = App\Flight::where('active', 1)->max('price');*/
     }
 #overload login of Auth
     public function login(Request $request){
-        #for admins table
-/*        if (\Auth::guard('admin')->attempt(['email'=> $request->email, 'password' => $request->password])) {
-     #     AuthSession session = this.GetSession();
-          return redirect('/admin');
-        }
-        elseif (\Auth::guard('admin')->attempt(['name'=> $request->email, 'password' => $request->password])) {
-          return redirect('/admin');
-        }*/
-        #for users table
+        
         if (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
           if(\Auth::user()->isAdmin()){
 

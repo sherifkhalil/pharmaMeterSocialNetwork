@@ -35,16 +35,11 @@
 		Route::post('posts/add', 'PostsController@store');
 		Route::put('edit/{post}', 'PostsController@append');
 		Route::get('delete/{post}', 'PostsController@destroy');
-		    //Login Routes...
-   /* Route::get('/admin/login','AdminAuth\AuthController@showLoginForm');
-    Route::post('/admin/login','AdminAuth\AuthController@login');
-    Route::get('/admin/logout','AdminAuth\AuthController@logout');
 
-    // Registration Routes...
-    Route::get('admin/register', 'AdminAuth\AuthController@showRegistrationForm');
-    Route::post('admin/register', 'AdminAuth\AuthController@register');
-*/
     Route::get('/admin', 'AdminController@index');
+
+	Route::get('/users/{User}', 'UsersController@profile');
+
 
  }); 
 
