@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -86,7 +85,7 @@ $max = App\Flight::where('active', 1)->max('price');*/
             }
             else{
             return redirect('/');
-        }
+            }
         } 
 
         elseif (\Auth::attempt(['email'=> $request->email, 'password' => $request->password])) {
@@ -97,15 +96,15 @@ $max = App\Flight::where('active', 1)->max('price');*/
             }
             else{
             return redirect('/'); 
-        }
+            }
         } 
 
-
-        else {
-                #echo "fail!";
-                return redirect('/login')->withErrors([
-                'errors' => 'These credentials do not match our records.',
-            ]); 
+        else{
+            return redirect('/login')
+                ->withInput($request->only('email'))
+                ->withErrors([
+                    'email' => 'These credentials do not match our records.',
+                ]);
         }
     }
 }
