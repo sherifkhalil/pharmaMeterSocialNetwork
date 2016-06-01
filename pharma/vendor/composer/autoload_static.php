@@ -505,7 +505,10 @@ class ComposerStaticInit61d673b6c98df63d7274d79af2d0b627
     );
 
     public static $classMap = array (
+        'AddAdminToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_110514_add_admin_to_users_table.php',
         'AddNameToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_29_141359_add_name_to_users_table.php',
+        'AddNumsToPersonalDatasTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_110539_add_nums_to_personal_datas_table.php',
+        'AddUseridFieldToRequestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_105050_add_userid_field_to_requests_table.php',
         'Cartalyst\\Sentry\\Groups\\GroupExistsException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
         'Cartalyst\\Sentry\\Groups\\GroupNotFoundException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
         'Cartalyst\\Sentry\\Groups\\NameRequiredException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
@@ -518,14 +521,9 @@ class ComposerStaticInit61d673b6c98df63d7274d79af2d0b627
         'Cartalyst\\Sentry\\Users\\UserNotActivatedException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
         'Cartalyst\\Sentry\\Users\\UserNotFoundException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
         'Cartalyst\\Sentry\\Users\\WrongPasswordException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
-<<<<<<< HEAD
         'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_180139_create_admins_table.php',
-=======
-
-        'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_180139_create_admins_table.php',
-
->>>>>>> 6225c52f835ced391e1f2b241e8e1af0d5b4cb43
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePersonalDatasTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_31_134628_create_personal_datas_table.php',
         'CreatePostTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_095622_create_Post_table.php',
         'CreateRequestTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_29_140745_create_request_table.php',
         'CreateTableFriends' => __DIR__ . '/../..' . '/database/migrations/2016_05_31_085506_create_table_friends.php',

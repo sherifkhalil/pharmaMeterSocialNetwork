@@ -28,12 +28,12 @@
                     </div>
                     
                       @if(Auth::user()->personal->image =='')
-                      <img src="{{ asset('images/profilepic/1.png')}}" width="150px" height="150px" class="img-circle"/> 
+                      <img src="{{Auth::user()->personal->image}}" width="150px" height="150px" class="img-circle"/> 
                       @else
-                      <img src="{{ asset('images/profilepic').'/'.Auth::user()->personal->image }}" width="150px" height="150px" class="img-circle"/> 
+                      <img src="{{ Auth::user()->personal->image }}" width="150px" height="150px" class="img-circle"/> 
                       
                     @endif
-                    <b><a href="/users/{{Auth::user()->personal}}/editprofile">Edit profile </a></b>
+                    <b><a href="/users/{{Auth::user()->id}}/editprofile">Edit profile </a></b>
                     <div class="blog-artical">
 
                        
@@ -93,48 +93,5 @@
                 </div>
                 <!---start-blog-pagenate---->
          
-            <!---//End-blog-pagenate---->
-                </div>
-                <div class="twitter-weights">
-                    <div class="blog-content-right">
-                        <div class="b-search">
-                            <form>
-                                <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                                <input type="submit" value="">
-
-                            </form>
-                        </div>                         
-                    <div class="blog-post" id="sub">
-                    </br>
-                     <div id= "add"> <h3> People you may know ?  </h3></div></br>
-                       <div class="uname">
-                           <img src="images/1.png" alt="" id="profile"/>
-                            <span > <a href="#"> Username</a> </span>
-                            <span id="follow"> <a href="#"> Follow </a> </span>
-
-                       </div>
-                       <div class="uname">
-                           <img src="images/1.png" alt="" id="profile"/>
-                            <span > <a href="#"> Username</a> </span>
-                            <span id="follow"> <a href="#"> Follow </a> </span>
-                       </div>
-                        <a class="twittbtn" href="#">See all users</a>
-                    </div>
-                    
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-            
-            </div>
-        </div>
-        </div>
-        <!-- /Blog -->
-         {{-- end of posts --}}
-            
-    </div>
-            
-
-
-
-
+           
 @endsection

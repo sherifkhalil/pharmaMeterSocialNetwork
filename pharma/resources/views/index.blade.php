@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{ Auth::user()->id }}
-{{ Auth::user()->name }}
  <div id="latest-blog">
     <div class="container">  
         {{-- posts --}}
@@ -47,9 +45,6 @@
                                         @if(isset(Auth::user()->personal->image))
                                             <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" alt="">
                                         @endif
-
-                                            <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="" alt="">
-
                                             <textarea  class="col-md-10 col-sm-10 col-xs-7" name='content'  placeholder="add new post"></textarea>
                                         </div>
                                         <hr>   
@@ -73,8 +68,6 @@
                                  <img src="{{$post->user->personal->image}}">   
                                     @endif
                                     </li>
-                                 <li class="categoery"><img src=""></li>
-
                                     <li class="post-date"><p><span> {{$post->created_at->format('d')}}</span><label>{{$post->created_at->format('M,Y')}}</label></p></li>
                                     <li class="artlick"><a href="#"><span> </span> <i>90</i></a></li>
                                     <li class="art-comment"><a href="#"><span> </span> <i>50</i></a></li>
@@ -90,7 +83,7 @@
                                 <div class="blog-artical-info-head">
                                     
                                     <ul>
-                                        <li><span><i class="fa fa-user" aria-hidden="true"></i></span>by <a href="#">{{ $post->user->name}}</a></li>
+                                        <li><span><i class="fa fa-user" aria-hidden="true"></i></span>by <a href="/users/{{$post->user->id}}">{{ $post->user->name}}</a></li>
                                         @if(Auth::user()->id == $post->user_id && Auth::user()->token == $post->user_token)
                                          <li>
                                             <span><i class="fa fa-pencil" aria-hidden="true"></i></span><a href="" data-toggle="modal" data-target=".edit{{$post->id}}">Edit</a>
@@ -224,64 +217,7 @@
                     
                 <!---start-blog-pagenate---->
             
-            <!---//End-blog-pagenate---->
-                </div>
-                <div class="twitter-weights">
-                    <div class="blog-content-right">
-                        <div class="b-search">
-                            <form>
-                                <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                                <input type="submit" value="">
-
-                            </form>
-                        </div>                         
-                    <div class="blog-post" id="sub">
-                    </br>
-                     <div id= "add"> <h3> People you may know ?  </h3></div></br>
-                       <div class="uname">
-                           <img src="{{ asset('images/1.png')}}" id="profile"/>
-                            <span > <a href="#"> Username</a> </span>
-                            <span id="follow"> <a href="#"> Follow </a> </span>
-
-                       </div>
-                       <div class="uname">
-                           <img src="{{ asset('images/1.png')}}" id="profile"/>
-                            <span > <a href="#"> Username</a> </span>
-                            <span id="follow"> <a href="#"> Follow </a> </span>
-                       </div>
-                        <a class="twittbtn" href="#">See all users</a>
-                    </div>
-                    <!---//End-twitter-weight---->
-                    <!---- start-tag-weight---->
-                    <!-- <div class="b-tag-weight">
-                        <h3>Tags Weight</h3>
-                        <ul>
-                            <li><a href="#">Lorem</a></li>
-                            <li><a href="#">consectetur</a></li>
-                            <li><a href="#">dolore</a></li>
-                            <li><a href="#">aliqua</a></li>
-                            <li><a href="#">sit amet</a></li>
-                            <li><a href="#">ipsum</a></li>
-                            <li><a href="#">Lorem</a></li>
-                            <li><a href="#">consectetur</a></li>
-                            <li><a href="#">dolore</a></li>
-                            <li><a href="#">aliqua</a></li>
-                            <li><a href="#">sit amet</a></li>
-                            <li><a href="#">ipsum</a></li>
-                        </ul>
-                    </div> -->
-                    <!---- //End-tag-weight---->
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-            
-            </div>
-        </div>
-        </div>
-        <!-- /Blog -->
-         {{-- end of posts --}}
-            
-    </div>
+           
     <script src="{{ asset('js/vendor/jquery-1.11.0.min.js')}}"></script>
    <script>
             $(function () {

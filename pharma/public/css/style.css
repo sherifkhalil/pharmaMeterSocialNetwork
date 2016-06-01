@@ -2097,7 +2097,7 @@ textarea::-webkit-scrollbar {
 .addpost textarea:focus,.addcomment textarea:focus{
     outline: 0;
 }
-.addpost img
+.addpost img , .addcomment img
 {
 	/* width:13%; */
 	 height:53px; 
