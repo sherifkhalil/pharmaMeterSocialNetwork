@@ -2091,7 +2091,7 @@ ul.pagenation li a:hover{
 moz-appearance:none;
   outline:0px none transparent;
 }
-::-webkit-scrollbar { 
+textarea::-webkit-scrollbar { 
     display: none; 
 }
 .addpost textarea:focus,.addcomment textarea:focus{
@@ -2175,4 +2175,8 @@ textarea { border: none; }
 	height:1px;
 	margin-bottom:10px;
 	text-align:center;
+}
+.blog-artical
+{
+	margin-top:30px;
 }

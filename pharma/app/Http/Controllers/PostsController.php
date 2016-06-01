@@ -67,7 +67,7 @@ class PostsController extends Controller
 				$filename = $post->created_at.'.'.$extension;
 				$post->image = '/post_pictures/'.$filename;
 				Input::file('image')->move($destinationPath, $filename);
-				Image::make($destinationPath.$filename)->insert(public_path().'/images/logo.png','bottom-right')->resize(900, 300)->save($destinationPath.$filename);
+				Image::make($destinationPath.$filename)->insert(public_path().'/images/logo.png','bottom-right')->resize(900, 400)->save($destinationPath.$filename);
 
 				$post->save();
 				$done = 'post add succssufully';
