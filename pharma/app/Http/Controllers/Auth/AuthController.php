@@ -78,6 +78,10 @@ $max = App\Flight::where('active', 1)->max('price');*/
 #overload login of Auth
     public function login(Request $request){
         
+         $this->validate($request, [
+            'email' => 'required', 'password' => 'required',
+        ]);
+
         if (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
           if(\Auth::user()->isAdmin()){
 
