@@ -29,12 +29,23 @@
 		// });
 		Route::auth();
 		Route::get('/', 'HomeController@index');
-		Route::get('/admin','AdminController@index');
+		#Route::get('/admin','AdminController@index');
 		//post routes ...
 		Route::get('posts/{post}', 'PostsController@show');
 		Route::post('posts/add', 'PostsController@store');
 		Route::put('edit/{post}', 'PostsController@append');
 		Route::get('delete/{post}', 'PostsController@destroy');
+
+		Route::get('/users/{User}', 'UsersController@profile');
+		Route::get('/users/{User}/editprofile', 'UsersController@edit');
+		Route::patch('/users/{User}/update', 'UsersController@update');
+
+
+        Route::get('/admin', 'AdminController@index');
+
+	
+
+
 
  }); 
 
