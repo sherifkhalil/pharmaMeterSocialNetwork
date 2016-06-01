@@ -505,7 +505,9 @@ class ComposerStaticInit61d673b6c98df63d7274d79af2d0b627
     );
 
     public static $classMap = array (
+        'AddActiveToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_120129_add_active_to_users_table.php',
         'AddAdminToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_110514_add_admin_to_users_table.php',
+        'AddNameToRequestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_120104_add_name_to_requests_table.php',
         'AddNameToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_29_141359_add_name_to_users_table.php',
         'AddNumsToPersonalDatasTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_110539_add_nums_to_personal_datas_table.php',
         'AddUseridFieldToRequestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_105050_add_userid_field_to_requests_table.php',

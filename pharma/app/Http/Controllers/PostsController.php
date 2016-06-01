@@ -70,18 +70,19 @@ class PostsController extends Controller
 				Image::make($destinationPath.$filename)->insert(public_path().'/images/logo.png','bottom-right')->resize(900, 400)->save($destinationPath.$filename);
 
 				$post->save();
+				$user->personal->no_posts +=1;
+				$user->personal->save();
 				$done = 'post add succssufully';
 			    return Redirect::to('/')->with('done');
-			    // return "done";
 			}
 			else 
 			{
 			      // sending back with error message.
 				$post->save();
+				$user->personal->no_posts +=1;
+				$user->personal->save();
 				$done = 'post add succssufully';
-				$posts = Post::orderBy('created_at','DESC')->get();
 			    return Redirect::to('/')->with('done');
-			    // return "done without image";
 			}
 		}//end of valid validator
 	}// end of store action
@@ -91,6 +92,8 @@ class PostsController extends Controller
 		{
 			if(sizeof($post) > 0)
 			{
+				$post->user->personal->no_posts -=1;
+				$post->user->personal->save();
 				$post->delete();
 				$done = 'post deleted succssufully..';
 				return Redirect::to('/')->with('done');
