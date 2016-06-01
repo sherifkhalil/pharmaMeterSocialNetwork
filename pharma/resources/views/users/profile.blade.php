@@ -90,6 +90,7 @@
                         <div class="clearfix"> </div>
                         
                     </div>
+                    
                 </div>
                 <!---start-blog-pagenate---->
          
