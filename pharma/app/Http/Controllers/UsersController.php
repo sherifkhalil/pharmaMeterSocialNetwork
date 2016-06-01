@@ -11,6 +11,7 @@ use DB;
 use App\User;
 use App\Personal_data;
 use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -24,7 +25,7 @@ class UsersController extends Controller
             $profile = new Personal_data ;
            
             $profile->user_id = Auth::user()->id;
-            $profile->image = "1.png";
+            $profile->image = "/profilepic/1.png";
             $profile->save();
             return view('users.profile',compact('profile'));  
         }
@@ -65,12 +66,12 @@ class UsersController extends Controller
 
          if (Input::hasFile('image'))
          {
-            $imageName =  time(). '.' . 
+            $imageName =  Carbon::now(). '.' . 
             $request->file('image')-> getClientOriginalExtension();
-            $profile->image = $imageName;
+            $profile->image = '/profilepic/'.$imageName;
             $profile->update();
             $request->file('image')->move(
-            base_path() . '/public/images/profilepic/', $imageName );
+            base_path() . '/public/profilepic/', $imageName );
          }
          else
         {

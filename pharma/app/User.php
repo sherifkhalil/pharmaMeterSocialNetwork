@@ -64,6 +64,10 @@ class User extends Authenticatable
     {
         return $this->hasManny('App\Post');
     }
+    public function followers()
+    {
+        return $this->hasManny('App\Follower','follower_id');
+    }
 
 
 

@@ -61,7 +61,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li><a href="/users/{{ Auth::user()->id }}" >
-                                <img width="30px" height="20px" src="{{ Auth::user()->personal->image }}" alt="">{{ Auth::user()->name }} </a>
+                                <img width="30px" height="20px" src="{{ Auth::user()->personal->image }}" alt=""> {{ Auth::user()->name }} </a>
                             @if(Auth::user()->isAdmin())
                             <li><a href="#">Dashboard</a>
                             @endif
@@ -94,6 +94,64 @@
            
 <!-- header -->
     @yield('content')
+     <!---//End-blog-pagenate---->
+                </div>
+                <div class="twitter-weights">
+                    <div class="blog-content-right">
+                        <div class="b-search">
+                            <form>
+                                <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                                <input type="submit" value="">
+
+                            </form>
+                        </div>                         
+                    <div class="blog-post" id="sub">
+                    </br>
+                     <div id= "add"> <h3> People you may know ?  </h3></div></br>
+                       <div class="uname">
+                           <img src="{{ asset('images/1.png')}}" id="profile"/>
+                            <span > <a href="#"> Username</a> </span>
+                            <span id="follow"> <a href="#"> Follow </a> </span>
+
+                       </div>
+                       <div class="uname">
+                           <img src="{{ asset('images/1.png')}}" id="profile"/>
+                            <span > <a href="#"> Username</a> </span>
+                            <span id="follow"> <a href="#"> Follow </a> </span>
+                       </div>
+                        <a class="twittbtn" href="#">See all users</a>
+                    </div>
+                    <!---//End-twitter-weight---->
+                    <!---- start-tag-weight---->
+                    <!-- <div class="b-tag-weight">
+                        <h3>Tags Weight</h3>
+                        <ul>
+                            <li><a href="#">Lorem</a></li>
+                            <li><a href="#">consectetur</a></li>
+                            <li><a href="#">dolore</a></li>
+                            <li><a href="#">aliqua</a></li>
+                            <li><a href="#">sit amet</a></li>
+                            <li><a href="#">ipsum</a></li>
+                            <li><a href="#">Lorem</a></li>
+                            <li><a href="#">consectetur</a></li>
+                            <li><a href="#">dolore</a></li>
+                            <li><a href="#">aliqua</a></li>
+                            <li><a href="#">sit amet</a></li>
+                            <li><a href="#">ipsum</a></li>
+                        </ul>
+                    </div> -->
+                    <!---- //End-tag-weight---->
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            
+            </div>
+        </div>
+        </div>
+        <!-- /Blog -->
+         {{-- end of posts --}}
+            
+    </div>
 
 <!-- footer sector -->
         </div><!-- /container -->
