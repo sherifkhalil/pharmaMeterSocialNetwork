@@ -33,7 +33,7 @@
                       <img src="{{ asset('images/profilepic').'/'.Auth::user()->personal->image }}" width="150px" height="150px" class="img-circle"/> 
                       
                     @endif
-                    <b><a href="/users/{{Auth::user()->personal}}/editprofile">Edit profile </a></b>
+                    <b><a href="/users/{{Auth::user()->id}}/editprofile">Edit profile </a></b>
                     <div class="blog-artical">
 
                        
@@ -90,6 +90,7 @@
                         <div class="clearfix"> </div>
                         
                     </div>
+                    
                 </div>
                 <!---start-blog-pagenate---->
          
