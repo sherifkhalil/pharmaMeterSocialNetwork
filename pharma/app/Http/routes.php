@@ -24,12 +24,9 @@
 
  Route::group(['middleware' => ['web']], function () {
 
-		// Route::get('/', function () {
-		//     return view('index');
-		// });
-		
+
+		Route::auth();
 		Route::get('/', 'HomeController@index');
-		#Route::get('/admin','AdminController@index');
 		//post routes ...
 		Route::get('posts/{post}', 'PostsController@show');
 		Route::post('posts/add', 'PostsController@store');
@@ -40,8 +37,6 @@
 		Route::get('/users/{User}/editprofile', 'UsersController@edit');
 		Route::patch('/users/{User}/update', 'UsersController@update');
 
-
-        Route::get('/admin', 'AdminController@index');
         //follow routes ...
         Route::post('/follow/{follower_id}', 'FollowersController@store');
         Route::post('/unfollow/{follower_id}', 'FollowersController@destroy');
@@ -50,4 +45,9 @@
 
 
  }); 
-Route::auth();
+
+
+Route::group(['middleware' => 'admin'], function () {
+
+    Route::get('/admin', 'AdminController@index');
+});
