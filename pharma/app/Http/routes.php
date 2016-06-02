@@ -27,7 +27,7 @@
 		// Route::get('/', function () {
 		//     return view('index');
 		// });
-		Route::auth();
+		
 		Route::get('/', 'HomeController@index');
 		#Route::get('/admin','AdminController@index');
 		//post routes ...
@@ -50,4 +50,4 @@
 
 
  }); 
-
+Route::auth();
