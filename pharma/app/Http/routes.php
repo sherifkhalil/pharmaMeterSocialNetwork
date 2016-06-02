@@ -35,14 +35,16 @@
 		Route::post('posts/add', 'PostsController@store');
 		Route::put('edit/{post}', 'PostsController@append');
 		Route::get('delete/{post}', 'PostsController@destroy');
-
+		//user routes ...
 		Route::get('/users/{User}', 'UsersController@profile');
 		Route::get('/users/{User}/editprofile', 'UsersController@edit');
 		Route::patch('/users/{User}/update', 'UsersController@update');
 
 
         Route::get('/admin', 'AdminController@index');
-
+        //follow routes ...
+        Route::post('/follow/{follower_id}', 'FollowersController@store');
+        Route::post('/unfollow/{follower_id}', 'FollowersController@destroy');
 	
 
 

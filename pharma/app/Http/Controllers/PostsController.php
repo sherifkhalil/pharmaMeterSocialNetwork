@@ -30,8 +30,8 @@ class PostsController extends Controller
 		}
 		else
 		{
-			$errors = "this page isnt avalible!!";	
-			Redirect::to('/errors/404')->with('errors');
+			Session::put('error',  "this page isnt avalible!!");	
+			Redirect::to('/errors/404');
 		}
 			
 
@@ -45,10 +45,8 @@ class PostsController extends Controller
 		]);
 		if($validator->fails())
 		{// validator dosn't work
-			$errors = $validator->messages();
-			// $posts = Post::orderBy('created_at','DESC')->get();
-			return Redirect::to('/')->with('errors');
-			// return "error";
+			Session::put('errors',  $validator->messages());
+			return Redirect::back();
 		}
 		else
 		{
@@ -72,8 +70,8 @@ class PostsController extends Controller
 				$post->save();
 				$user->personal->no_posts +=1;
 				$user->personal->save();
-				$done = 'post add succssufully';
-			    return Redirect::to('/')->with('done');
+			    Session::put('done',  'post add succssufully');
+				return Redirect::back();
 			}
 			else 
 			{
@@ -81,8 +79,8 @@ class PostsController extends Controller
 				$post->save();
 				$user->personal->no_posts +=1;
 				$user->personal->save();
-				$done = 'post add succssufully';
-			    return Redirect::to('/')->with('done');
+				Session::put('done',  'post add succssufully');
+				return Redirect::back();
 			}
 		}//end of valid validator
 	}// end of store action
@@ -95,19 +93,19 @@ class PostsController extends Controller
 				$post->user->personal->no_posts -=1;
 				$post->user->personal->save();
 				$post->delete();
-				$done = 'post deleted succssufully..';
-				return Redirect::to('/')->with('done');
+				Session::put('done',  'post deleted succssufully..');
+				return Redirect::back();
 			}
 			else
 			{
-				$errors = "something went wrong, please try again after while..";
-				Redirect::to('/errors/404')->with('errors');
+				Session::put('error',"something went wrong, please try again after while..");
+				Redirect::to('/errors/404');
 			}
 		}
 		else
 		{
-			$errors = "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!";
-			Redirect::to('/errors/404')->with('errors');
+			Session::put('error',  "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!");	
+			Redirect::to('/errors/404');
 		}
 	}//end of destroy action
 }

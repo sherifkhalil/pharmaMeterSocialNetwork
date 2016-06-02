@@ -44,6 +44,11 @@
                            {{ $errors}}
                                
                             </div>
+                        @elseif(isset(session($errors)))
+                        <div class="alert alert-danger" id="validation" style="margin:10px">
+                           {{ session('errors')}}
+                               
+                            </div>
                         @endif
                         <a class="b-home" href="/">Back to Home</a>
                     </div>

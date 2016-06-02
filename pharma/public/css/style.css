@@ -2039,6 +2039,9 @@ ul.pagenation li a:hover{
 {
 	width:30px;
 	height:25px;
+	-webkit-border-radius: 30em;
+	-moz-border-radius: 30em;
+	-o-border-radius: 30em;
 }
 .logo > a >img
 {
@@ -2146,13 +2149,13 @@ textarea { border: none; }
 {
 	color:black;
 }
-.uname #follow a
+.uname .follow
 {
-	color:red;
+	background-color:green;
 }
-.uname #follow a:hover
+.uname .follow:hover
 {
-	color:green;
+	background-color:#19b5fe;
 }
 .blog-artical .h_nopost
 {
@@ -2162,12 +2165,16 @@ textarea { border: none; }
 	font-size:48px;
 	color:#ccc;
 }
-.blog-artical .p_nopost
+.blog-artical .p_nopost,.p_nopost
 {
 	text-align:center;
 	font-size:28px;
 	color:#ccc;
 }
+	.p_nopost
+	{
+	font-size:14px;
+	}
 .hr
 {
 	border-bottom: 1px solid #ccc;
@@ -2179,4 +2186,24 @@ textarea { border: none; }
 .blog-artical
 {
 	margin-top:30px;
+}
+.add > h3{
+	color: #2C3E50;
+	font-size: 1.0em;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 0.7em 0 0.5em;
+	font-weight: 900;
+}
+.error
+{
+	position:absolute;
+	top:130px;
+	bottom:10px;
+	width:100%;
+	min-height:20px;
+	max-height:50px;
+	overflow:hidden;
+	opacity: 0.6;
+    filter: alpha(opacity=60);
 }

@@ -11,23 +11,7 @@
                         <div class="heading-section">
                         
                         <div class='form-group form-group-sm'>
-                       @if (count($errors) > 0)
-                        <div class="alert alert-danger error" style="margin:10px">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                <li>
-                                    {{ $error}}
-                                </li>
-                                @endforeach
-                            </ul>
-                            </div>
-                        @elseif(isset($done))
-                            <div class='alert alert-success error'>
-                                {{$done}}
-
-                            </div>
-
-                        @endif
+                       
                         @if(Auth::user())
                             <form method="post" action="/posts/add" enctype="multipart/form-data">
                             {!! csrf_field() !!}
@@ -194,35 +178,22 @@
                     @else
                     <div class="blog-artical">
                             <h4 class="h_nopost"><i>-- There is no posts yet -- </i></h4>
-                            <p class="p_nopost">you need to follow some frinds first , here is suggeions</p>
-                            <div class="uname col-md-3">
-                               <img src="{{ asset('images/1.png')}}" id="profile"/>
-                                <span > <a href="#"> Username</a> </span>
-                                <span id="follow"> <a href="#"> Follow </a> </span>
+                            <p class="p_nopost">you need to follow some frinds first , here is suggestion</p>
+                    
+                       
+                       @foreach( session('top_to_follow') as $follow)
+                           <div class="uname col-md-3 col-sm-3 col-xs-3">
+                               <img src="{{$follow->image}}" id="profile"/>
+                                <span > <a href="/users/{{$follow->id}}"> {{$follow->user->name}}</a> </span>
+                                <button  class=" btn btn-xs btn-success follow" value="{{$follow->id}}"> Follow </button>
+                                <input type="hidden" class="token" value="{{ csrf_token() }}">
+
                            </div>
-                           <div class="uname col-md-3">
-                               <img src="{{ asset('images/1.png')}}" id="profile"/>
-                                <span > <a href="#"> Username</a> </span>
-                                <span id="follow"> <a href="#"> Follow </a> </span>
-                           </div>
-                           <div class="uname col-md-3">
-                               <img src="{{ asset('images/1.png')}}" id="profile"/>
-                                <span > <a href="#"> Username</a> </span>
-                                <span id="follow"> <a href="#"> Follow </a> </span>
-                           </div>
+                        @endforeach
 
                     </div>
                 </div>
                     @endif
                     
-                <!---start-blog-pagenate---->
-            
-           
-    <script src="{{ asset('js/vendor/jquery-1.11.0.min.js')}}"></script>
-   <script>
-            $(function () {
-              $('.error').delay(5000).fadeOut('slow');
-            });
-            
-          </script>         
+                <!---start-blog-pagenate---->       
 @endsection
