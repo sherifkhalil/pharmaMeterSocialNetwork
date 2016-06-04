@@ -60,10 +60,6 @@ class UsersController extends Controller
         $profile->company = $request->company;
        
 
-
-
-
-
          if (Input::hasFile('image'))
          {
             $imageName =  Carbon::now(). '.' . 
@@ -84,4 +80,5 @@ class UsersController extends Controller
           // var_dump($profile);
           return redirect('/users/profile');
     }
+
 }
