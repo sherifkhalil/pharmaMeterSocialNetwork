@@ -98,12 +98,7 @@ $max = App\Flight::where('active', 1)->max('price');*/
 
                 return redirect('/admin');
             }
-            else{
-/*              $user_id = \Auth::user()->id;
-                $follow = \DB::table('followers')->where('user_id',$user_id )->get();
-                if($follow>0){
-                    return view('users.followUser');
-                }*/    
+            else{   
             return redirect('/'); 
             }
         } 
