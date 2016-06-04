@@ -2207,3 +2207,29 @@ textarea { border: none; }
 	opacity: 0.6;
     filter: alpha(opacity=60);
 }
+#title
+{
+	margin-left: 30px;
+	font-size:30px;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-weight: bold;
+	color:#547E9E;
+	text-transform: capitalize;
+}
+#show
+{
+	margin-left: 150px;
+	color:#898F94;
+}
+#edit
+{
+	margin-left: 20px;
+	color:#898F94;
+}
+#head
+{
+	margin-left: 300px;
+	color:#1B374E;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-weight: bold;
+}

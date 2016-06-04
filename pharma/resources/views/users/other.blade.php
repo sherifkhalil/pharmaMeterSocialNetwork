@@ -13,14 +13,14 @@
                     <div class="blog-articals">
                         <div class="heading-section">
                         
-                          <img src="{{ Auth::user()->personal->image }}" width="150px" height="150px" class="img-circle"/> 
+                          <img src="{{ $profile->image }}" width="150px" height="150px" class="img-circle"/> 
                         
                             
-                             <a id="title" href="#"> {{Auth::user()->name}} </a>
+                             <a id="title" href="#"> {{$user->name}} </a>
                             
-                          
+                     
                              <br>
-                             <a id="show" href="/users/{{Auth::user()->id}}/profiledetails"> About</a>
+                             <a id="show" href="/users/{{$user->id}}/profiledetails"> About</a>
                             
                             </div>
                             <br><br><div class='form-group form-group-sm'>
@@ -48,10 +48,8 @@
                           
 
                      </div>
-
-
                     
-                    @if(isset($posts) && sizeof($posts) >0)
+                      @if(isset($posts) && sizeof($posts) >0)
                         @foreach($posts as $post)
                             <div class="blog-artical">
                             <div class="blog-artical-basicinfo">
@@ -194,6 +192,7 @@
                     </div>
                 </div>
                     @endif
+                  
                   
                   
                     

@@ -13,8 +13,8 @@
                     <div class="blog-articals">
                       
 
-                    <b><a href="/users/{User}"> My account </a></b>
-                   <h2> Edit your profile </h2>
+                    <b><a id="show" href="/users/{{Auth::user()->id}}"> My account </a></b>
+                   <h3 id="head"> Edit your profile </h3>
                         <form  method='POST' action = "/users/{{Auth::user()->id}}/update" enctype="multipart/form-data">
                          {{method_field('PATCH')}}
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -51,7 +51,7 @@
                                   <div>
                                       <select  class="form-control" data-style="btn-primary" id="degrees" name="degree">
                                       @if(Auth::user()->personal->degree !=='')
-                                      <option value= "{{Auth::user()->personal->degree}}">{{Auth::user()->personal->degree}}</option>
+                                      <option selected disabled value= "{{Auth::user()->personal->degree}}">{{Auth::user()->personal->degree}}</option>
                                       @else
                                       <option selected disabled>Choose degree</option>
                                       @endif
