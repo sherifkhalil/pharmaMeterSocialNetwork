@@ -130,15 +130,14 @@
                                     <p>{{ $post->content}}<a href="#">[...]</a></p>
                                 </div>
                                 <div class="blog-artical-info-comment">
-                                    <div class="alert alert-info">
-                                        <p>there is comment</p>
-                                    </div>
-                                    <div class="alert alert-info">
-                                        <p>there is comment</p>
-                                    </div>
-                                    <div class="alert alert-info">
-                                        <p>there is comment</p>
-                                    </div>
+                                    @foreach( $post->comments as $comment )
+                                        <div class="alert alert-info">
+                                            <a href="/users/{{$comment->user->id}}">
+                                                <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{$comment->user->personal->image }}" alt="">
+                                            </a>
+                                            <p>{{$comment->content}}</p>
+                                        </div>
+                                    @endforeach
                                     <div class="col-md-12 pull-left">
                                         <form method="post" action="/comment/add/{{$post->id}}" enctype="multipart/form-data">
                                         {!! csrf_field() !!}
@@ -148,10 +147,11 @@
                                                     <hr>
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" alt="">
-                                                        <textarea  class="col-md-10 col-sm-10 col-xs-7" name='content'  placeholder="add new comment ..."></textarea>
+                                                        <input type="hidden" class="comment_token" value="{{ csrf_token() }}">
+                                                        <textarea  class="col-md-10 col-sm-10 col-xs-7" name='comment_content' post={{$post->id}} placeholder="add new comment ..."></textarea>
                                                     </div>
                                                     <hr>   
-                                                    <input  class='col-xs-2 pull-right btn btn-sm btn-primary' type='submit' name='Add' value="Comment"/>
+                                                    <input  class='col-xs-2 pull-right btn btn-sm btn-primary comment' type='submit' name='Add' value="Comment"/>
                                             </div>                                    
                                            </div>
                                         </form>
