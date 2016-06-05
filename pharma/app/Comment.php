@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 // soft delete
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Post extends Model
+class Comment extends Model
 {
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -15,8 +15,9 @@ class Post extends Model
      use SoftDeletes; //<--- use the softdelete traits
  
     protected $dates = ['deleted_at']; //<--- new field to be added in your table
+ 
     protected $fillable = [
-        'image', 'content',
+         'content',
     ];
 
     /**
@@ -24,20 +25,16 @@ class Post extends Model
      *
      * @var array
      */
-    protected $hidden = [
-        'user_token', 'user_id','views_num',
-    ];
     /*Relation between tables */
+    protected $hidden = [
+        'post_id', 'user_id',
+    ];
     public function user()
     {
-    	return $this->belongsTo(User::class,'user_id');
+    	return $this->belongsTo(User::class);
     }
-    public function comments()
+     public function post()
     {
-        return $this->hasMany(Comment::class,'post_id');
-    }
-    public function postups()
-    {
-        return $this->hasMany(Postup::class,'post_id');
+    	return $this->belongsTo(Post::class);
     }
 }

@@ -12,7 +12,6 @@ class FollowersController extends Controller
 {
     public function store($follower_id,Request $request){
 		/* set validation of following componants*/
-		// return $request->follower_id;
 		// $validator = Validator::make($follower_id,$request->all(),[
 		// 	'follower_id' => 'Required',
 		// ]);
@@ -60,13 +59,13 @@ class FollowersController extends Controller
 			else
 			{
 				Session::put('error',"something went wrong, please try again after while..");
-				Redirect::to('/errors/404');
+				return Redirect::to('/errors/404');
 			}
 		}
 		else
 		{
 			Session::put('error',  "You are not authorize to do that, sorry for disapoint you, we are SECUIRE!!!");	
-			Redirect::to('/errors/404');
+			return Redirect::to('/errors/404');
 		}
 	}//end of destroy action
 }

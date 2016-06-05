@@ -50,6 +50,13 @@
 		Route::get('features/{feature}', 'FeaturesController@feature');
 		Route::post('feedbacks/add/{feature}', 'FeedbacksController@store');
 		Route::get('feedbacks/up/{feature}', 'FeedbacksController@feedbackUp');
+		
+		//comment routes ...
+		Route::post('comment/add/{post}', 'CommentsController@store');
+		Route::put('edit/{comment}', 'CommentsController@append');
+		Route::get('delete/{comment}', 'CommentsController@destroy');
+
+
 
 
 

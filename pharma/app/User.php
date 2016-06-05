@@ -63,7 +63,7 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Post','user_id');
     }
 
     public function feedbacks()
@@ -77,6 +77,14 @@ class User extends Authenticatable
     public function followers()
     {
         return $this->hasMany('App\Follower','follower_id');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'user_id');
+    }
+    public function postups()
+    {
+        return $this->hasMany(Postup::class,'user_id');
     }
 
 
