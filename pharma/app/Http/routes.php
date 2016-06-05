@@ -47,6 +47,8 @@
 		Route::get('features', 'FeaturesController@index');
 		Route::post('features/add', 'FeaturesController@add');
 		Route::get('features/{feature}/delete', 'FeaturesController@delete');
+		Route::get('features/{feature}', 'FeaturesController@feature');
+		Route::post('feedbacks/add/{feature}', 'FeedbacksController@store');
 
 
 
