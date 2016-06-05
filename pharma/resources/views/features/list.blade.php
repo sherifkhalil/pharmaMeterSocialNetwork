@@ -17,8 +17,13 @@
 	                        
 		                        @foreach($features as $feature)
 			                        <li class="list-group-item list-group-item-info ">
+<<<<<<< HEAD
 			                          <b><a href="features/{{$feature->id}}" > {{$feature->name}} </a></b>
 			                          <a href="/features/{{$feature->id}}/delete"> Delete </a>
+=======
+			                          <b><a href="" > {{$feature->name}} </a></b>
+			                          
+>>>>>>> bad57d27e9a6a66854a6862f9d5ac283037ac3d4
 			                        </li>
 		                        @endforeach
 
@@ -28,15 +33,7 @@
                         
                             <div class="clearfix"> </div>
                         </div>
-                        <form  method='POST' action = "/features/add">
-			               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-					            <div class='form-group col-md-4'>
-					            	<input  class='form-control' type='text' name='name' class='form-control' />
-					            </div>
-					            <div  class='form-group '>
-					            		<input type='submit' class='btn btn-primary ' value='Newfeature'/>	
-					            </div>
-			               </form>
+                       
                     </div>
                     
                     

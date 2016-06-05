@@ -52,10 +52,18 @@
 
 
 
+
  }); 
 
 
 Route::group(['middleware' => 'admin'], function () {
 
     Route::get('/admin', 'AdminController@index');
+    //R&D routes ...
+    //url -> /features/add
+    Route::post('features/add', 'FeaturesController@add');
+    //url -> /features/{{$feature->id}}/delete
+	Route::get('features/{feature}/delete', 'FeaturesController@delete');
+
+
 });
