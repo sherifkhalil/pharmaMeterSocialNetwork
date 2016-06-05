@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Validator;
 class PostsController extends Controller
 {
     public function show($id){
-		$post = Post::where('is_published', '1')->find($id);
+		$post = Post::find($id);
 		if(sizeof($post) > 0)
 		{
 			// increase view by 1 
 			// $post ->views_num +=1 ;
 			// $post ->save();
-			return view ('pages.single',compact('post'));
+			// return view ('pages.single',compact('post'));
+			return $post;
 		}
 		else
 		{

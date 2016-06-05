@@ -8,10 +8,17 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddActiveToUsersTable' => $baseDir . '/database/migrations/2016_06_01_120129_add_active_to_users_table.php',
     'AddAdminToUsersTable' => $baseDir . '/database/migrations/2016_06_01_110514_add_admin_to_users_table.php',
+    'AddDealetdAtToCommentsTable' => $baseDir . '/database/migrations/2016_06_05_143336_add_dealetd_at_to_comments_table.php',
+    'AddDealetdAtToPostsTable' => $baseDir . '/database/migrations/2016_06_05_143343_add_dealetd_at_to_posts_table.php',
     'AddNameToRequestsTable' => $baseDir . '/database/migrations/2016_06_01_120104_add_name_to_requests_table.php',
     'AddNameToUsersTable' => $baseDir . '/database/migrations/2016_05_29_141359_add_name_to_users_table.php',
+<<<<<<< HEAD
     'AddNoupsFieldToFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
+=======
+    'AddNewNumsToUsersTable' => $baseDir . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
+>>>>>>> f1fa9b7aa90721ec9012b1bebac3e19d6af1f522
     'AddNumsToPersonalDatasTable' => $baseDir . '/database/migrations/2016_06_01_110539_add_nums_to_personal_datas_table.php',
+    'AddTablePostups' => $baseDir . '/database/migrations/2016_06_05_121813_add_table_postups.php',
     'Cartalyst\\Sentry\\Groups\\GroupExistsException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\GroupNotFoundException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\NameRequiredException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
@@ -35,6 +42,7 @@ return array(
     'CreatePersonalDatasTable' => $baseDir . '/database/migrations/2016_05_31_134628_create_personal_datas_table.php',
     'CreatePostTable' => $baseDir . '/database/migrations/2016_05_30_095622_create_Post_table.php',
     'CreateRequestTable' => $baseDir . '/database/migrations/2016_05_29_140745_create_request_table.php',
+    'CreateTableComments' => $baseDir . '/database/migrations/2016_06_05_134322_create_table_comments.php',
     'CreateTableFriends' => $baseDir . '/database/migrations/2016_05_31_085506_create_table_friends.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2016_05_29_140237_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

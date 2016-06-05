@@ -850,16 +850,16 @@ ul.pagenation li a:hover{
 .post-date span{
 	display:block;
 	color:#19b5fe;
-	font-size: 1.5em;
+	font-size: 1.4em;
 }
 .post-date label{
-	font-size: 12px;
+	font-size: 11px;
 	color: #19b5fe;
-	margin-top: -0.2em;
+	margin-top: -0.3em;
 	display: block;
 }
 .post-date p{
-	padding: 0.7em 0 0 0;
+	padding: 0.4em 0 0 0;
 }
 .categoery span{
 	width: 28px;
@@ -2233,3 +2233,50 @@ textarea { border: none; }
 	font-family: "Times New Roman", Georgia, Serif;
 	font-weight: bold;
 }
+
+.commentHolder
+{
+	border:1px solid #19b5fe;
+	border-radius:5px;
+	min-height:50px;
+	padding: 10px;
+  	/* border: 1px solid transparent; */
+  	margin-bottom:10px;
+  	overflow:hidden;
+}
+	.leftSection img
+	{
+		height:45px;
+		width:60px;
+		border-radius:3px;
+		margin-left:0px;
+		
+	}
+	.rightSide
+	{
+		min-width:80%;
+		max-height:100px;
+		overflow-y:scroll;
+	}
+	.rightSide > p
+	{
+		color:#2C3E50;
+		font-size: 1.0em;
+		margin-top:0px;
+	}
+ 	
+	.commentAction a  label
+	{
+		color:#2C3E50;
+		font-size: 0.8em;
+		margin-top:0px;
+
+	}
+	.commentAction span
+	{
+		color:#19b5fe;
+		font-size: 0.8em;
+		margin-left:5px;
+
+	}
+

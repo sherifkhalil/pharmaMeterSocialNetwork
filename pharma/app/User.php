@@ -60,18 +60,31 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Personal_data','user_id');
     }
+
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Post','user_id');
     }
 
     public function feedbacks()
     {
         return $this->hasMany('App\Feedback');
     }
+    public function feedbackup()
+    {
+        return $this->hasOne('App\Feedbackup','user_id');
+    }
     public function followers()
     {
         return $this->hasMany('App\Follower','follower_id');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'user_id');
+    }
+    public function postups()
+    {
+        return $this->hasMany(Postup::class,'user_id');
     }
 
 

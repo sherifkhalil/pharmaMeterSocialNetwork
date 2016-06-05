@@ -52,9 +52,15 @@
                                  <img src="{{$post->user->personal->image}}">   
                                     @endif
                                     </li>
-                                    <li class="post-date"><p><span> {{$post->created_at->format('d')}}</span><label>{{$post->created_at->format('M,Y')}}</label></p></li>
-                                    <li class="artlick"><a href="#"><span> </span> <i>90</i></a></li>
-                                    <li class="art-comment"><a href="#"><span> </span> <i>50</i></a></li>
+                                    <li class="post-date">
+                                        <p>
+                                            <span> {{$post->created_at->format('d')}}</span>
+                                            <label>{{$post->created_at->format('M,Y')}}</label>
+                                            <label>{{$post->created_at->format('H:i A')}}</label>
+                                        </p>
+                                    </li>
+                                    <li class="artlick"><a href="" class="postUp"><span> </span> <i>{{$post->postups->count()}}</i></a></li>
+                                    <li class="art-comment"><a href="/posts/{{$post->id}}"><span> </span> <i>{{$post->comments->count()}}</i></a></li>
                                     <div class="clearfix"> </div>
                                 </ul>
                             </div>
@@ -127,34 +133,59 @@
                                     </ul>
                                 </div>
                                 <div class="blog-artical-info-text">
-                                    <p>{{ $post->content}}<a href="#">[...]</a></p>
+                                    <p>{{ $post->content}}<a href="/posts/{{$post->id}}">[...]</a></p>
                                 </div>
                                 <div class="blog-artical-info-comment">
-                                    <div class="alert alert-info">
-                                        <p>there is comment</p>
-                                    </div>
-                                    <div class="alert alert-info">
-                                        <p>there is comment</p>
-                                    </div>
-                                    <div class="alert alert-info">
-                                        <p>there is comment</p>
-                                    </div>
+                                    @foreach( $post->comments()->orderBy('created_at', 'desc')->take(3)->get() as $comment )
+                                        <div class="commentHolder ">
+                                            <div class="leftSection pull-left col-md-1">
+                                                <a href="/users/{{$comment->user->id}}">
+                                                    <img src="{{$comment->user->personal->image }}" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="pull-left rightSide col-md-11">
+                                                <a class="col-md-12 pull-left" href="/users/{{$comment->user->id}}"> <p>{{$comment->user->name}}</p>
+                                                </a>
+                                                <p class="col-md-12 pull-left">{{$comment->content}}</p>
+                                            </div>
+                                            <div class="commentAction col-md-12">   
+                                                <a href="/posts/{{$post->id}}">
+                                                     <label>{{$post->created_at->format('d M,Y')}}</label>
+                                                        <label>{{$post->created_at->format('H:i A')}}</label>
+                                                </a>
+
+                                                <span>
+                                                    <i class="fa fa-heart" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Up</a>
+                                                </span>
+                                                @if(Auth::user() == $comment->user)
+                                                <span>
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Edit</a>
+                                                </span>
+                                                <span>
+                                                    <i class="fa fa-trash" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Delete</a>
+                                                </span>
+                                                @endif
+                                            </div>
+                                            
+                                        </div>
+                                    @endforeach
                                     <div class="col-md-12 pull-left">
-                                        <form method="post" action="/comment/add/{{$post->id}}" enctype="multipart/form-data">
-                                        {!! csrf_field() !!}
+                                       <!--  <form method="post" action="/comment/add/{{$post->id}}" enctype="multipart/form-data">
+                                        {!! csrf_field() !!} -->
                                             <div class='col-xs-12 col-md-12' >
                                                 <div class='form-control pull-left addcomment' >
                                                     Add comment
                                                     <hr>
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" alt="">
-                                                        <textarea  class="col-md-10 col-sm-10 col-xs-7" name='content'  placeholder="add new comment ..."></textarea>
+                                                        <img class="user col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" user="{{Auth::user()->name }}" id="{{Auth::user()->id }}" alt="">
+                                                        <input type="hidden" class="comment_token" value="{{ csrf_token() }}">
+                                                        <textarea  class="col-md-10 col-sm-10 col-xs-7 comment_content" name='content' post={{$post->id}} placeholder="add new comment ..."></textarea>
                                                     </div>
                                                     <hr>   
-                                                    <input  class='col-xs-2 pull-right btn btn-sm btn-primary' type='submit' name='Add' value="Comment"/>
+                                                    <input  class='col-xs-2 pull-right btn btn-sm btn-primary comment' type='submit' name='Add' value="Comment"/>
                                             </div>                                    
                                            </div>
-                                        </form>
+                                        <!-- </form> -->
                                     </div>
                                 </div>
                             </div>
