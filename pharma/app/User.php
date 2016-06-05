@@ -60,6 +60,7 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Personal_data','user_id');
     }
+
     public function posts()
     {
         return $this->hasMany('App\Post');
@@ -68,6 +69,10 @@ class User extends Authenticatable
     public function feedbacks()
     {
         return $this->hasMany('App\Feedback');
+    }
+    public function feedbackup()
+    {
+        return $this->hasOne('App\Feedbackup','user_id');
     }
     public function followers()
     {
