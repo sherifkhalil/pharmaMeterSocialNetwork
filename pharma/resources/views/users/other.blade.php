@@ -23,28 +23,7 @@
                              <a id="show" href="/users/{{$user->id}}/profiledetails"> About</a>
                             
                             </div>
-                            <br><br><div class='form-group form-group-sm'>
-                               <form method="post" action="/posts/add" enctype="multipart/form-data">
-                                {!! csrf_field() !!}
-                                    <div class='col-xs-12 col-md-12' >
-                                        <div class='form-control addpost' >
-                                            <div class=" btn  col-md-2 col-sm-2 uploadfile ">
-                                                
-                                                  <i class="fa fa-picture-o" aria-hidden="true"></i> Upload Photo
-                                                  <input type="file" name="image" class="upload" />
-                                              
-                                            </div>
-                                            <hr>
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                  <textarea  class="col-md-10 col-sm-10 col-xs-7" name='content'  placeholder="add new post"></textarea>
-                                            </div>
-                                            <hr>   
-                                                  <input  class='col-xs-2 pull-right btn btn-sm btn-primary' type='submit' name='Add' value="Publish"/>
-                                        </div>                                    
-                                   </div>
-                                </form>
-                                <div class="clearfix"> </div>
-                          </div>
+                            <br><br>
                           
 
                      </div>

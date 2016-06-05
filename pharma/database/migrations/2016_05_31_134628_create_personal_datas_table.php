@@ -14,7 +14,6 @@ class CreatePersonalDatasTable extends Migration
     {
         Schema::create('personal_datas', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('image');
             $table->string('first_name');
             $table->string('last_name');

@@ -42,7 +42,11 @@
         //follow routes ...
         Route::post('/follow/{follower_id}', 'FollowersController@store');
         Route::post('/unfollow/{follower_id}', 'FollowersController@destroy');
-	
+		
+		//R&D routes ...
+		Route::get('features', 'FeaturesController@index');
+		Route::post('features/add', 'FeaturesController@add');
+		Route::get('features/{feature}/delete', 'FeaturesController@delete');
 
 
 

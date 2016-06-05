@@ -39,6 +39,7 @@
                             <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="{{ url('/') }}">About</a></li>
                             <li><a href="{{ url('/') }}">Services</a></li>
+                            <li><a href="{{ url('features') }}">R & D</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a>
                             </li>
