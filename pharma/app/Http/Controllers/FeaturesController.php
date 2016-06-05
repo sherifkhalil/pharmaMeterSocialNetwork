@@ -8,6 +8,9 @@ use App\Http\Requests;
 use Carbon\Carbon;
 use App\Feature ;
 use Illuminate\Support\Facades\Validator;
+use Auth;
+use DB;
+use App\User;
 
 
 class FeaturesController extends Controller
@@ -47,4 +50,12 @@ class FeaturesController extends Controller
 		$feature-> delete();
     	return back();
 	}
+
+	public function feature($id){
+		$feature = DB::table('features')->where('id',$id )->first();
+		$feedbacks = DB::table('feedbacks')->where('feature_id',$id )->get();
+		return view('features.feature',compact('feature','feedbacks')); 
+
+	}
 }
+
