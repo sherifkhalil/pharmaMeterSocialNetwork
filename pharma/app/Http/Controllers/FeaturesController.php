@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Auth;
 use DB;
 use App\User;
+use App\Feedback;
+
 
 
 class FeaturesController extends Controller
@@ -52,8 +54,12 @@ class FeaturesController extends Controller
 	}
 
 	public function feature($id){
-		$feature = DB::table('features')->where('id',$id )->first();
-		$feedbacks = DB::table('feedbacks')->where('feature_id',$id )->get();
+		// $feature = DB::table('features')->where('id',$id )->first();
+		// $feedbacks = DB::table('feedbacks')->where('feature_id',$id )->get();
+		$feature = Feature::where('id',$id )->first();
+		$feedbacks = Feedback::where('feature_id','=',$id )->get();
+		// var_dump($feedbacks);
+
 		return view('features.feature',compact('feature','feedbacks')); 
 
 	}

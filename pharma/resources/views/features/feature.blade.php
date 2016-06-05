@@ -18,10 +18,49 @@
                     	<div class='form-group form-group-sm'>
                     	
 							@if(isset($feedbacks) && sizeof($feedbacks) >0)
+                            <h3 id="title">Feedbacks </h3>
                         	@foreach($feedbacks as $feedback)
                         		
 	                                <div class="alert alert-info">
-                                    	<p>{{$feedback->content}}</p>
+                                    	<p><h4>{{$feedback->content}}</h4></p>
+                                        <br>
+                                        @foreach($feedback->feedcomments as $comment)
+                                        <div class="uname">
+                                            <img src="{{ $comment->user->personal->image}}" id="profile"/>
+                                            <span><i class="fa fa-user" aria-hidden="true"></i></span>   by <a href="">{{$comment->user->name}}</a>
+                                            {{$comment-> content}}
+                                            <span><a id="feed" class="glyphicon glyphicon-pencil" href=""></a></span>
+                                            <span><a  class="glyphicon glyphicon-trash" href="/feedcomment/{{$comment->id}}/delete"></a><span>
+                                           
+                                            <!-- up -->
+
+                                            <form method="post" id="comment_up" action="/feedcomment/up">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <input type="hidden" name="comment"  value="{{ $comment->id }}" />
+                                                
+                                                 <br>
+                                                <button type="submit" class="btn btn-default" >
+                                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                                {{$comment->no_ups}}
+                                                </button>
+                                           </form>
+                                            <div id="formdiv" class="hidden" > 
+                                            <h2> Here </h2>
+                                            </div> 
+                                            <br><hr>
+                                        </div>
+                                        @endforeach
+                                        <form  method='post' action = "/feedcomment/{{$feedback->id}}/add">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <div class='form-group col-md-4'>
+                                                        <input  class='form-control' type='text' name='content' class='form-control'/>
+                                                </div>
+                                                
+                                                <div  class='form-group '>
+                                                    
+                                                        <input type='submit' class='btn btn-primary ' value='Commet'/>   
+                                                </div>
+                                        </form>
                                		</div>
 	                        @endforeach
 	                        @endif
@@ -43,10 +82,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                </div>
-            </div>
-        </div>
+                        <div class="clearfix"> </div>
     </div>
 </div>                       
 @endsection

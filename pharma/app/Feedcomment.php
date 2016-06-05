@@ -34,4 +34,9 @@ class Feedcomment extends Model
         return $this->belongsTo(Feedback::class);
     }
 
+    public function commentup()
+    {
+        return $this->hasOne('App\Feedcommentup');
+    }
+
 }
