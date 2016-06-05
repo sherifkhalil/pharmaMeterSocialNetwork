@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class FeedbacksController extends Controller
 {
 
-	// store new post 
+	 
 	public function store(Request $request,$id){
-		/* set validation of post componants*/
         $this->validate($request, [
             'content' => 'required',
         ]);
