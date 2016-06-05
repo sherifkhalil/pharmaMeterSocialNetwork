@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+// soft delete
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Comment extends Model
 {
      /**
@@ -11,6 +12,10 @@ class Comment extends Model
      *
      * @var array
      */
+     use SoftDeletes; //<--- use the softdelete traits
+ 
+    protected $dates = ['deleted_at']; //<--- new field to be added in your table
+ 
     protected $fillable = [
          'content',
     ];

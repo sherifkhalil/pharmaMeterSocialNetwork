@@ -10,6 +10,9 @@ use App\User;
 use App\Post;
 use App\Comment;
 use Carbon\Carbon;
+// soft delete
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CommentsController extends Controller
 {
