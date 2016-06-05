@@ -23,8 +23,14 @@
                         	<div class="blog-artical">
 
 	                                <div class="alert alert-info">
-
-                                    	<p><h4>{{$feedback->content}}</h4></p>
+	                                	 
+	                                	 
+                                    	<img src="{{$feedback->user->personal->image}}" class="thumbnail" height="70" width="70" style="display: inline;">   
+                                    	<span><a href="">{{$feedback->user->name}}</a></span>
+                                    	<span style="margin-left:15px;">{{$feedback->content}}</span>
+                                    	<div class="pull-right">
+                                    	<span>{{$feedback->feedbackups->count()}} ups </span><span><a href="/feedbacks/up/{{$feedback->id}}" >Up</a> </span>
+                                    	</div>
                                         <br>
                                         @foreach($feedback->feedcomments as $comment)
                                         <div class="uname">
@@ -64,12 +70,7 @@
                                                 </div>
                                         </form>
 
-	                                    <img src="{{$feedback->user->personal->image}}" class="thumbnail" height="70" width="70" style="display: inline;">   
 
-                                    	<span>{{$feedback->content}}</span>
-                                    	<div class="pull-right">
-                                    	<span>{{$feedback->feedbackups->count()}} ups </span><span><a href="/feedbacks/up/{{$feedback->id}}" >Up</a> </span>
-                                    	</div>
 
                                		</div>
 
