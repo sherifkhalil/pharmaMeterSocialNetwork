@@ -46,7 +46,7 @@
 		//R&D routes ...
 		Route::get('features', 'FeaturesController@index');
 		Route::get('features/{feature}', 'FeaturesController@feature');
-		Route::post('feedbacks/add/{feature}', 'FeedbacksController@store');
+		Route::post('feedbacks/{feature}', 'FeedbacksController@store');
 
 		Route::post('feedcomment/{feedback}/add', 'FeedcommentsController@add');
 		Route::get('feedcomment/{comment}/delete', 'FeedcommentsController@delete');

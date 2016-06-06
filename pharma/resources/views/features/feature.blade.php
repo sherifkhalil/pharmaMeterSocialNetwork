@@ -32,6 +32,7 @@
                                     	<span>{{$feedback->feedbackups->count()}} ups </span><span><a href="/feedbacks/up/{{$feedback->id}}" >Up</a> </span>
                                     	</div>
                                         <br>
+                                        <hr/>
                                         @foreach($feedback->feedcomments as $comment)
                                         <div class="uname">
                                             <img src="{{ $comment->user->personal->image}}" id="profile"/>
@@ -58,7 +59,7 @@
                                             <br><hr>
                                         </div>
                                         @endforeach
-                                        <form  method='post' action = "/feedcomment/{{$feedback->id}}/add">
+                                        <form  method='post' action = "/feedcomment/{{$feedback->id}}/add" >
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <div class='form-group col-md-4'>
                                                         <input  class='form-control' type='text' name='content' class='form-control'/>
@@ -66,7 +67,7 @@
                                                 
                                                 <div  class='form-group '>
                                                     
-                                                        <input type='submit' class='btn btn-primary ' value='Commet'/>   
+                                                        <input type='submit' class='btn btn-primary ' value='add'/>   
                                                 </div>
                                         </form>
 
@@ -80,7 +81,7 @@
 	                        @endif
 
                             <div class="col-md-12 pull-left">
-                                <form method="post" action="/feedbacks/add/{{$feature->id}}" id="feedback_up">
+                                <form method="post" action="/feedbacks/{{$feature->id}}" id="feedback">
                                     {!! csrf_field() !!}
                                     <div class='col-xs-12 col-md-12' >
                                         <div class='form-control pull-left addcomment' >
@@ -92,7 +93,7 @@
                                             	<input type="hidden" name="feedback_id" value="{{ $feedback->id }}">
                                             </div>
                                             <hr>   
-                                            <input class='col-xs-2 pull-right btn btn-sm btn-primary' type='submit' name='Add' value="Comment"/>
+                                            <input class='col-xs-2 pull-right btn btn-sm btn-primary' type='submit' name='Add' value="Add" id="feed"/>
                                         </div> 
                                          @if($errors->any())
 										<h4>{{$errors->first()}}</h4>

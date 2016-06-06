@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Response;
 use App\Feedback;
 use App\Feedbackup;
 use App\User;
@@ -33,6 +34,12 @@ class FeedbacksController extends Controller
 			$feedback->feature_id=$id;
 			$feedback->save();
 			return Redirect::back();
+		/*	  $response = array(
+            'status' => 'success',
+            'msg' => 'Setting created successfully',
+        );
+        return response()->json($response); */
+
 
 	}
 
