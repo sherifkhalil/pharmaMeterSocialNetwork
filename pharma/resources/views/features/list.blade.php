@@ -18,11 +18,9 @@
 		                        @foreach($features as $feature)
 			                        <li class="list-group-item list-group-item-info ">
 			                          <b><a href="features/{{$feature->id}}" > {{$feature->name}} </a></b>
-<<<<<<< HEAD
-=======
-			                          <a href="/features/{{$feature->id}}/delete"> Delete </a>
+	                     
 
->>>>>>> f1fa9b7aa90721ec9012b1bebac3e19d6af1f522
+
 			                        </li>
 		                        @endforeach
 		                        

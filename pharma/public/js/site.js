@@ -32,9 +32,11 @@ $(function () {
 
 
     $("#comment_up").submit(function(e){
+                console.log("ajax");
                 e.preventDefault();
                 var comment = $('input[name="comment"]').val();
                 var data = new FormData();
+                console.log("ajax");
                 data.append('user',user);
                 data.append('comment',comment);
                 $.ajax({
