@@ -188,4 +188,70 @@ $('.postUp').on('click', function(event) {
           }
       })//end of ajax action
   });//end of comment submit
+/************************************ edit post actions ******************************************/
+$('.updatepost').on('click', function(event) {
+      event.preventDefault();
+      /* Act on the event */
+      var box = $(this).parent().parent();//modal-content
+      var post_id = box.find('.editpost').attr('post');
+      var content = box.find('.editpost').val();
+      var edit_Url = '/edit/'+post_id;
+      var token =  box.find('.edit_token').val();
+      var formData = {
+          '_token': token,
+          'post_id':post_id,
+          'content':content,
+      }
+      $.ajax({
+          url: edit_Url,
+          type: 'put',
+          data: formData,
+          success:function(response){
+              box.parent().parent().modal('hide');
+              console.log(response);
+              // $('.box'+post_id).hide();
+              $('.box'+post_id).html('<p>'+response['content']+'<a href="/posts/'+response['post->id']+'">[...]</a></p>');
+          },
+          error:function(response){
+              console.log(response);
+          }
+      })//end of ajax action
+  });//end of comment submit
+
+/************************************ edit comment actions ******************************************/
+$('.editcomment').on('click', function(event) {
+      event.preventDefault();
+      /* Act on the event */
+      var box = $(this).parent().parent().parent();
+      var comment_id = $(this).attr('comment');
+      box.find('.commentcontent').addClass('hide');
+      box.find('.editcommentbox').removeClass('hide');
+      box.find('.ok').removeClass('hide');
+      $('.ok').on('click', function(event) {
+        var content = box.find('.editcommentbox').val();
+        var edit_Url = '/comment/edit/'+comment_id;
+        var token =  box.find('.editcomment_token').val();
+        var formData = {
+            '_token': token,
+            'comment_id':comment_id,
+            'content':content,
+        }
+        $.ajax({
+            url: edit_Url,
+            type: 'put',
+            data: formData,
+            success:function(response){
+              console.log(response);
+                box.find('.commentcontent').removeClass('hide');
+                box.find('.editcommentbox').addClass('hide');
+                box.find('.ok').addClass('hide');
+                box.find('.commentcontent').html(response['content']);
+
+            },
+            error:function(response){
+                console.log(response);
+            }
+        })//end of ajax action
+      });//end of update submit
+  });//end of edit submit
 });

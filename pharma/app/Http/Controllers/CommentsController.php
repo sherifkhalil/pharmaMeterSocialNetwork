@@ -53,4 +53,30 @@ class CommentsController extends Controller
 			    // return Redirect::to('/')->with('done');
 		}
 	}// end of store action
+
+
+	public function append($comment_id,Request $request){
+		$comment = Comment::find($comment_id);
+		if (Auth::user() && Auth::user()->id == $comment->user_id)
+		{
+			if(sizeof($comment) > 0)
+			{
+				$comment->content =$request->content;
+				$comment->updated_at = Carbon::now();
+				$comment->save();
+				// Session::put('done',  'comment deleted succssufully..');
+				return $comment;
+			}
+			else
+			{
+				Session::put('error',"something went wrong, please try again after while..");
+				Redirect::to('/errors/404');
+			}
+		}
+		else
+		{
+			Session::put('error',  "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!");	
+			Redirect::to('/errors/404');
+		}
+	}//end of destroy action
 }

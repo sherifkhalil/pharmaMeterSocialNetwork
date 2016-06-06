@@ -874,10 +874,12 @@ ul.pagenation li a:hover{
 	display: inline-block;
 	/* background: url(../images/like.png) no-repeat 0px 0px; */
 	margin-top: 0.5em;
-	font-size:1.5em;
+	font-size:1.8em;
 }
 
-	.artlick span i{ color:#19b5fe;margin-top:0.1em;}
+.artlick span i{ color:#19b5fe;margin-top:0.1em;}
+.artlick span:hover i.fa-arrow-down{color:red;}
+.artlick span:hover i.fa-arrow-up{color:green;}
 .artlick i{
 	display: block;
 	color: #19b5fe;
@@ -1175,7 +1177,7 @@ ul.pagenation li a:hover{
 .contact-form-row div:nth-child(3){
 	margin-right:0;
 }
-.contact-form-row2 textarea{
+.contact-form-row2 textarea , .editcommentbox{
 	width:100%;
 	padding:1em;	
 	font-family: 'Droid Sans', sans-serif;
@@ -1190,6 +1192,13 @@ ul.pagenation li a:hover{
 	-moz-transition:border-color 0.4s;
 	-o-transition:border-color 0.4s;
 	-ms-transition:border-color 0.4s;
+}
+.editcommentbox{
+	margin-left:20px;
+	min-height:20px;
+	width:80%;
+	font-size:0.8em;
+	padding:0.2em;
 }
 .contact-form-row2 {
 	margin-top:1em;
