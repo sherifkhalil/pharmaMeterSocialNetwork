@@ -85,6 +85,32 @@ class PostsController extends Controller
 			}
 		}//end of valid validator
 	}// end of store action
+
+	public function append($post_id,Request $request){
+		$post = Post::find($post_id);
+		if (Auth::user() && Auth::user()->id == $post->user_id && Auth::user()->token == $post->user_token)
+		{
+			if(sizeof($post) > 0)
+			{
+				$post->content =$request->content;
+				$post->updated_at = Carbon::now();
+				$post->save();
+				// Session::put('done',  'post deleted succssufully..');
+				return $post;
+			}
+			else
+			{
+				Session::put('error',"something went wrong, please try again after while..");
+				Redirect::to('/errors/404');
+			}
+		}
+		else
+		{
+			Session::put('error',  "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!");	
+			Redirect::to('/errors/404');
+		}
+	}//end of destroy action
+
 	public function destroy($id){
 		$post = Post::find($id);
 		if (Auth::user() && Auth::user()->id == $post->user_id && Auth::user()->token == $post->user_token)

@@ -59,7 +59,30 @@
                                             <label>{{$post->created_at->format('H:i A')}}</label>
                                         </p>
                                     </li>
-                                    <li class="artlick"><a href="" class="postUp"><span> </span> <i>{{$post->postups->count()}}</i></a></li>
+                                    <?php $count = 'no';?>
+                                    @foreach (Auth::user()->postups as $key => $postup)
+                                       @if($postup['post_id'] == $post->id)
+                                           <?php $count = '1';?>
+                                       @endif
+                                    @endforeach
+                                    @if($count == '1' )
+
+                                        <li class="artlick">
+                                            <input type="hidden" class="up_token" value="{{ csrf_token() }}">
+                                            <a href="" class="postUp" post="{{$post->id}}">
+                                                    <span class="dlike"><i class="fa fa-arrow-down ilike" aria-hidden="true"></i></span>
+                                                    <i class="count">{{$post->postups->count()}}</i>
+                                                </a>
+                                        </li>
+                                    @else
+                                        <li class="artlick">
+                                            <input type="hidden" class="up_token" value="{{ csrf_token() }}">
+                                            <a href="" class="postUp" post="{{$post->id}}">
+                                                    <span class="dlike"><i class="fa fa-arrow-up ilike" aria-hidden="true"></i></span>
+                                                    <i class="count">{{$post->postups->count()}}</i>
+                                                </a>
+                                        </li>
+                                    @endif
                                     <li class="art-comment"><a href="/posts/{{$post->id}}"><span> </span> <i>{{$post->comments->count()}}</i></a></li>
                                     <div class="clearfix"> </div>
                                 </ul>
@@ -84,26 +107,29 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     <h4 class="modal-title" id="myModalLabel">Edit post</h4>
                                                   </div>
+                                                  <!-- <form method="post" action="/edit/{{$post->id}}" enctype="multipart/form-data">
+                                                    {!! csrf_field() !!} -->
                                                   <div class="modal-body" style="height:250px">
-                                                   <form method="post" action="/edit/{{$post->id}}" enctype="multipart/form-data">
-                                                    {!! csrf_field() !!}
+                                                   
                                                     <div class=" btn  col-md-2 col-sm-2 uploadfile ">
                                                         <img src="{{$post->image}}" width="270px" height="150px" />    
-                                                        <i class="fa fa-picture-o" aria-hidden="true"></i> <!-- Upload another Photo
-                                                        <input type="file" name="image" class="upload" /> -->
+                                                        <i class="fa fa-picture-o" aria-hidden="true"></i> Upload another Photo
+                                                        <input type="file" name="image" class="upload" />
                                                     </div>
                                                     <hr> 
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" alt="">
-                                                        <textarea  class="col-md-10 col-sm-10 col-xs-7" name='content'  placeholder="add new post">{{$post->content}}</textarea>
+                                                        <input type="hidden" class="edit_token" value="{{ csrf_token() }}">
+                                                        <textarea  class="editpost col-md-10 col-sm-10 col-xs-7" post="{{$post->id}}" name='content'  placeholder="add new post">{{$post->content}}</textarea>
                                                     </div>
-                                                    </div>
-                                                  <div class="modal-footer">
+                                                </div>
+                                                <div class="modal-footer">
                                                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
                                                     
-                                                     <input  class='btn btn-sm btn-primary' type='submit' name='Add' value="Update"/>
-                                                    </form>
-                                                  </div>
+                                                     <input  class='btn btn-sm btn-primary updatepost' type='submit' name='Add' value="Update"/>
+                                                    
+                                                </div>
+                                                  <!-- </form> -->
                                                 </div>
                                               </div>
                                             </div>
@@ -132,43 +158,51 @@
                                         <div class="clearfix"> </div>
                                     </ul>
                                 </div>
-                                <div class="blog-artical-info-text">
+                                <div class="blog-artical-info-text box{{$post->id}}">
                                     <p>{{ $post->content}}<a href="/posts/{{$post->id}}">[...]</a></p>
                                 </div>
                                 <div class="blog-artical-info-comment">
-                                    @foreach( $post->comments()->orderBy('created_at', 'desc')->take(3)->get() as $comment )
-                                        <div class="commentHolder ">
-                                            <div class="leftSection pull-left col-md-1">
-                                                <a href="/users/{{$comment->user->id}}">
-                                                    <img src="{{$comment->user->personal->image }}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="pull-left rightSide col-md-11">
-                                                <a class="col-md-12 pull-left" href="/users/{{$comment->user->id}}"> <p>{{$comment->user->name}}</p>
-                                                </a>
-                                                <p class="col-md-12 pull-left">{{$comment->content}}</p>
-                                            </div>
-                                            <div class="commentAction col-md-12">   
-                                                <a href="/posts/{{$post->id}}">
-                                                     <label>{{$post->created_at->format('d M,Y')}}</label>
-                                                        <label>{{$post->created_at->format('H:i A')}}</label>
-                                                </a>
+                                    @if(sizeof($post->comments()->orderBy('created_at', 'desc')->take(3)->orderBy('created_at', 'asc')->get())>0)
+                                        @foreach($post->comments()->orderBy('created_at', 'desc')->take(3)->orderBy('created_at', 'asc')->get()->reverse() as $comment )
+                                            <div class="commentHolder ">
+                                                <div class="leftSection pull-left col-md-1">
+                                                    <a href="/users/{{$comment->user->id}}">
+                                                        <img src="{{$comment->user->personal->image }}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="pull-left rightSide col-md-11">
+                                                    <a class="col-md-12 pull-left" href="/users/{{$comment->user->id}}"> <p>{{$comment->user->name}}</p>
+                                                    </a>
+                                                    <p class="col-md-12 pull-left commentcontent">{{$comment->content}}</p>
+                                                    <input type="hidden" class="editcomment_token" value="{{ csrf_token() }}">
+                                                    <textarea class="editcommentbox hide col-md-10 pull-left commentcontent">{{$comment->content}}</textarea>
+                                                    <input type="submit" class=" hide ok pull-right btn btn-sm btn-primary" value="update">
+                                                </div>
+                                                <div class="commentAction col-md-12">   
+                                                    <a href="/posts/{{$post->id}}">
+                                                         <label>{{$post->created_at->format('d M,Y')}}</label>
+                                                            <label>{{$post->created_at->format('H:i A')}}</label>
+                                                    </a>
 
-                                                <span>
-                                                    <i class="fa fa-heart" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Up</a>
-                                                </span>
-                                                @if(Auth::user() == $comment->user)
-                                                <span>
-                                                    <i class="fa fa-pencil" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Edit</a>
-                                                </span>
-                                                <span>
-                                                    <i class="fa fa-trash" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Delete</a>
-                                                </span>
-                                                @endif
+                                                    <span>
+                                                        <i class="fa fa-arrow-up" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Up</a>
+                                                    </span>
+                                                    @if(Auth::user()->id == $comment->user->id)
+                                                    <span>
+                                                        <i class="fa fa-pencil" aria-hidden="true"></i><a href="" class="editcomment" comment="{{$comment->id}}"> Edit</a>
+                                                    </span>
+                                                    <span>
+                                                        <i class="fa fa-trash" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Delete</a>
+                                                    </span>
+                                                    @endif
+                                                </div>
+                                                
                                             </div>
-                                            
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    @else
+                                        <div class="commentHolder empty">-- There is no comments yet, be the first -- </div>
+                                        <div></div><div></div>
+                                    @endif
                                     <div class="col-md-12 pull-left">
                                        <!--  <form method="post" action="/comment/add/{{$post->id}}" enctype="multipart/form-data">
                                         {!! csrf_field() !!} -->
