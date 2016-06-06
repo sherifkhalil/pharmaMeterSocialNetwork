@@ -872,12 +872,12 @@ ul.pagenation li a:hover{
 	width: 28px;
 	height: 28px;
 	display: inline-block;
-	background: url(../images/like.png) no-repeat 0px 0px;
-	margin-top: 1em;
-	font-size:0.9em;
+	/* background: url(../images/like.png) no-repeat 0px 0px; */
+	margin-top: 0.5em;
+	font-size:1.5em;
 }
 
-	.artlick span i{ color:white;margin-top:0.5em;}
+	.artlick span i{ color:#19b5fe;margin-top:0.1em;}
 .artlick i{
 	display: block;
 	color: #19b5fe;

@@ -179,9 +179,9 @@
                                                     </a>
 
                                                     <span>
-                                                        <i class="fa fa-heart" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Up</a>
+                                                        <i class="fa fa-arrow-up" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Up</a>
                                                     </span>
-                                                    @if(Auth::user() == $comment->user)
+                                                    @if(Auth::user()->id == $comment->user->id)
                                                     <span>
                                                         <i class="fa fa-pencil" aria-hidden="true"></i><a href="" data-toggle="modal" data-target=".edit{{$post->id}}"> Edit</a>
                                                     </span>
