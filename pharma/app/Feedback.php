@@ -24,9 +24,14 @@ class Feedback extends Model
          'user_id','feature_id',
     ];
     /*Relation between tables */
-    public function user()
+/*    public function user()
     {
     	return $this->belongsTo(User::class);
+    }*/
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function feature()
@@ -36,6 +41,10 @@ class Feedback extends Model
     public function feedcomments()
     {
         return $this->hasMany('App\Feedcomment');
+    }
+    public function feedbackups()
+    {
+        return $this->hasMany('App\Feedbackup');
     }
 
 }

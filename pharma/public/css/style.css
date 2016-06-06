@@ -2236,6 +2236,7 @@ textarea { border: none; }
 	font-family: "Times New Roman", Georgia, Serif;
 	font-weight: bold;
 }
+
 .commentHolder
 {
 	border:1px solid #19b5fe;
@@ -2283,3 +2284,4 @@ textarea { border: none; }
 	}
 	.empty
 	{text-align: center;color:#aaa;}
+

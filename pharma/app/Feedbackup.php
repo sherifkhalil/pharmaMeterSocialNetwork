@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Feedcomment extends Model
+class Feedbackup extends Model
 {
      /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Feedcomment extends Model
      * @var array
      */
     protected $fillable = [
-        'content',
+        
     ];
 
     /**
@@ -24,19 +24,19 @@ class Feedcomment extends Model
          'user_id','feedback_id',
     ];
     /*Relation between tables */
-    public function user()
+/*    public function user()
     {
     	return $this->belongsTo(User::class);
+    }*/
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function feedback()
     {
         return $this->belongsTo(Feedback::class);
-    }
-
-    public function commentup()
-    {
-        return $this->hasOne('App\Feedcommentup');
     }
 
 }

@@ -23,5 +23,31 @@ $(function () {
         $("#divalert").addClass("hidden");
         return false;});
     $("#cartemp").carousel();
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $("#feed").click(function (){
+        $("#formdiv").removeClass("hidden");
+
+    });
+
+
+    $("#comment_up").submit(function(e){
+                e.preventDefault();
+                var comment = $('input[name="comment"]').val();
+                var data = new FormData();
+                data.append('user',user);
+                data.append('comment',comment);
+                $.ajax({
+                    url:'/feedcomment/up',
+                    type:'POST',
+                    data:data,
+                    contentType:"multipart/form-data",
+                    processData:false,
+                    success:function(data){alert('Section created :)')},
+                    error: function (error) {
+                      console.log(error);
+                     }
+                });
+            })
+       
 })
