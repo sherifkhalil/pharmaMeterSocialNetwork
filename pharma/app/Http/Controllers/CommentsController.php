@@ -13,9 +13,7 @@ use Carbon\Carbon;
 use Session;
 use Redirect;
 use Illuminate\Support\Facades\Validator;
-// soft delete
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class CommentsController extends Controller
 {

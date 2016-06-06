@@ -874,7 +874,10 @@ ul.pagenation li a:hover{
 	display: inline-block;
 	background: url(../images/like.png) no-repeat 0px 0px;
 	margin-top: 1em;
+	font-size:0.9em;
 }
+
+	.artlick span i{ color:white;margin-top:0.5em;}
 .artlick i{
 	display: block;
 	color: #19b5fe;
@@ -2279,4 +2282,6 @@ textarea { border: none; }
 		margin-left:5px;
 
 	}
+	.empty
+	{text-align: center;color:#aaa;}
 

@@ -12,11 +12,16 @@ return array(
     'AddDealetdAtToPostsTable' => $baseDir . '/database/migrations/2016_06_05_143343_add_dealetd_at_to_posts_table.php',
     'AddNameToRequestsTable' => $baseDir . '/database/migrations/2016_06_01_120104_add_name_to_requests_table.php',
     'AddNameToUsersTable' => $baseDir . '/database/migrations/2016_05_29_141359_add_name_to_users_table.php',
+<<<<<<< HEAD
 
     'AddNoupsFieldToFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
 
     'AddNewNumsToUsersTable' => $baseDir . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
 
+=======
+    'AddNoupsFieldToFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
+    'AddNewNumsToUsersTable' => $baseDir . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
+>>>>>>> c08a489317fe3f2ae0bff4aa36919de48a5310ef
     'AddNumsToPersonalDatasTable' => $baseDir . '/database/migrations/2016_06_01_110539_add_nums_to_personal_datas_table.php',
     'AddTablePostups' => $baseDir . '/database/migrations/2016_06_05_121813_add_table_postups.php',
     'Cartalyst\\Sentry\\Groups\\GroupExistsException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
