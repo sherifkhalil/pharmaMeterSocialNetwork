@@ -21,22 +21,22 @@ class Feedbackup extends Model
      * @var array
      */
     protected $hidden = [
-         'user_id','feedback_id',
+         'feedback_id','user_id',
     ];
     /*Relation between tables */
 /*    public function user()
     {
     	return $this->belongsTo(User::class);
     }*/
-
+    public function feedback()
+    {
+        return $this->belongsTo(Feedback::class,'feedback_id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
     }
 
-    public function feedback()
-    {
-        return $this->belongsTo(Feedback::class);
-    }
+
 
 }

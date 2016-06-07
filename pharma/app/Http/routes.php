@@ -47,6 +47,7 @@
 		Route::get('features', 'FeaturesController@index');
 		Route::get('features/{feature}', 'FeaturesController@feature');
 		Route::post('feedbacks/{feature}', 'FeedbacksController@store');
+		Route::get('feedbacks/delete/{feature}', 'FeedbacksController@destroy');
 
 		Route::post('feedcomment/{feedback}/add', 'FeedcommentsController@add');
 		Route::get('feedcomment/{comment}/delete', 'FeedcommentsController@delete');
@@ -54,6 +55,7 @@
 
 
 		Route::get('feedbacks/up/{feature}', 'FeedbacksController@feedbackUp');
+		Route::get('feedbacks/down/{feature}', 'FeedbacksController@feedbackDown');
 		
 		//comment routes ...
 		Route::post('comment/add/{post}', 'CommentsController@store');
