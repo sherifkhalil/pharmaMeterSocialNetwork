@@ -133,13 +133,13 @@
                                 <div class= "add ">
                                     <h3> Top following to follow ?  </h3>
                                 </div>
-                                @if(sizeof(session('top_post_to_follow'))<1)
+                                @if(sizeof(session('top_users_to_follow'))<1)
                                         <p class="p_nopost">
                                         -- no suggestion now --
                                         </p>
                                 @else
                                     </br>
-                                       @foreach( session('top_followers_to_follow') as $follow)
+                                       @foreach( session('top_users_to_follow') as $follow)
                                        <div class="uname ">
                                            <img src="{{$follow->image}}" id="profile"/>
                                             <span > <a href="/users/{{$follow->id}}"> {{$follow->user->name}}</a> </span>
@@ -155,11 +155,11 @@
                                 <div class= "add">
                                      <h3> Top Interactive to follow ?  </h3>
                                 </div>
-                                @if(sizeof(session('top_post_to_follow'))<1)
+                                @if(sizeof(session('top_interactive_to_follow'))<1)
                                     <p class="p_nopost">-- no suggestion now --</p>
                                 @else
                                 </br>
-                                   @foreach( session('top_post_to_follow') as $follow)
+                                   @foreach( session('top_interactive_to_follow') as $follow)
                                    <div class="uname ">
                                        <img src="{{ $follow->image}}" id="profile"/>
                                         <span > <a href="/users/{{$follow->id}}"> {{$follow->user->name}}</a> </span>
