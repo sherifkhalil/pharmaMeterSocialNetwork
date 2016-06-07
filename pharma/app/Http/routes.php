@@ -51,6 +51,10 @@
 		Route::post('feedcomment/{feedback}/add', 'FeedcommentsController@add');
 		Route::get('feedcomment/{comment}/delete', 'FeedcommentsController@delete');
 		Route::post('/feedcomment/up','FeedcommentsController@up');
+		
+		// Route::post('/feedcomment/up',function(){
+		// 	return 'sdfsd';
+		// });
 
 
 		Route::get('feedbacks/up/{feature}', 'FeedbacksController@feedbackUp');

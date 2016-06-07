@@ -4,7 +4,7 @@
 <title>PHarmaMeter Social Network </title>
         <link href="{{ asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' /><link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
         <script src="{{ asset('js/jquery.min.js')}}"></script>
-        <script src="{{ asset('js/site.js')}}"></script>
+
          <!-- Custom Theme files -->
         <link href="{{ asset('css/style.css')}}" rel='stylesheet' type='text/css' />
          <!-- Custom Theme files -->
@@ -14,7 +14,7 @@
           addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
          </script>
          <!-- webfonts -->
-         <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+       <!--   <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'> -->
           <!-- webfonts -->
 
     
@@ -261,4 +261,5 @@
     <script src="{{asset('js/jquery.min.js')}}" ></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jsactions.js')}}"></script>
+    <script src="{{ asset('js/site.js')}}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

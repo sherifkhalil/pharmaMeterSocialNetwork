@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Carbon\Carbon;
-use App\Feature ;
+use App\Feature;
+use App\Feedback;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use DB;

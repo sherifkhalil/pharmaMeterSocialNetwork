@@ -31,42 +31,47 @@
                                     	<div class="pull-right">
                                     	<span>{{$feedback->feedbackups->count()}} ups </span><span><a href="/feedbacks/up/{{$feedback->id}}" >Up</a> </span>
                                     	</div>
-                                        <br>
-                                        @foreach($feedback->feedcomments as $comment)
-                                        <div class="uname">
-                                            <img src="{{ $comment->user->personal->image}}" id="profile"/>
-                                            <span><i class="fa fa-user" aria-hidden="true"></i></span>   by <a href="">{{$comment->user->name}}</a>
-                                            {{$comment-> content}}
-                                            <span><a id="feed" class="glyphicon glyphicon-pencil" href=""></a></span>
-                                            <span><a  class="glyphicon glyphicon-trash" href="/feedcomment/{{$comment->id}}/delete"></a><span>
-                                           
-                                            <!-- up -->
+                                       
+                                       <div class="comm{{$feedback->id}}"> 
+                                            @foreach($feedback->feedcomments as $comment)
+                                            <div class="uname">
+                                                    <img src="{{ $comment->user->personal->image}}" id="profile"/>
+                                                    <span><i class="fa fa-user" aria-hidden="true"></i></span>   by <a href="">{{$comment->user->name}}</a>
+                                                    <span>{{$comment-> content}}</span>
+                                                    <span><a id="feed" class="glyphicon glyphicon-pencil" href=""></a></span>
+                                                    <span><a  class="glyphicon glyphicon-trash" href="/feedcomment/{{$comment->id}}/delete"></a><span>
+                                            
+                                                <!-- up -->
 
-                                            <form method="post" id="comment_up" action="/feedcomment/up">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <input type="hidden" name="comment"  value="{{ $comment->id }}" />
-                                                
-                                                 <br>
-                                                <button type="submit" class="btn btn-default" >
-                                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                                                {{$comment->no_ups}}
-                                                </button>
-                                           </form>
-                                            <div id="formdiv" class="hidden" > 
+                                                <form>
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <input type="hidden" name="comment"  value="{{ $comment->id }}" />
+                                                    
+                                                     <br>
+                                                    <button class="btn btn-default comment_up" data-rowtok="{{ csrf_token() }}" data-rowid="{{ $comment->id }}" >
+                                                    <span class="glyphicon glyphicon-thumbs-up" id="data{{ $comment->id }}" aria-hidden="true">{{$comment->no_ups}}</span>
+                                                        
+                                                    </button>
+                                               </form>
+                                            </div>
+                                           
+                                            <div class="formdiv hidden" > 
                                             <h2> Here </h2>
                                             </div> 
                                             <br><hr>
-                                        </div>
+                                        
+                                        <!--fatma /feedcomment/{{$feedback->id}}/add-->
                                         @endforeach
-                                        <form  method='post' action = "/feedcomment/{{$feedback->id}}/add">
+                                         </div>
+                                        <form >
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <div class='form-group col-md-4'>
-                                                        <input  class='form-control' type='text' name='content' class='form-control'/>
+                                                        <input  class='form-control' type='text' name='content' class='form-control' id="comment{{$feedback->id}}"/>
                                                 </div>
                                                 
                                                 <div  class='form-group '>
                                                     
-                                                        <input type='submit' class='btn btn-primary ' value='Commet'/>   
+                                                        <input type='submit' class='btn btn-primary feedcomment' value='Commet'  data-rowid="{{ $feedback->id }}" data-rowtok="{{ csrf_token() }}"/>   
                                                 </div>
                                         </form>
 
@@ -78,7 +83,7 @@
                                		
 	                        @endforeach
 	                        @endif
-
+                            <!--enas-->
                             <div class="col-md-12 pull-left">
                                 <form method="post" action="/feedbacks/add/{{$feature->id}}" id="feedback_up">
                                     {!! csrf_field() !!}
