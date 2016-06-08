@@ -50,6 +50,7 @@
 
 		Route::post('feedcomment/{feedback}/add', 'FeedcommentsController@add');
 		Route::get('feedcomment/{comment}/delete', 'FeedcommentsController@delete');
+		Route::post('feedcomment/edit/{comment}', 'FeedcommentsController@update');
 		Route::post('/feedcomment/up','FeedcommentsController@up');
 		
 		// Route::post('/feedcomment/up',function(){

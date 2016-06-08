@@ -15,14 +15,14 @@
                             <div class="clearfix"> </div>
                         </div>
                     </div>
-                    	<div class='form-group form-group-sm'>
+                    	<div class='form-group form-group-sm ajax'>
 
 							@if(isset($feedbacks) && sizeof($feedbacks) >0)
                             <h3 id="title">Feedbacks </h3>
                         	@foreach($feedbacks as $feedback)
                         	<div class="blog-artical">
 
-	                                <div class="alert alert-info">
+	                                <div class="alert alert-info" >
 	                                	 
 	                                	 
                                     	<img src="{{$feedback->user->personal->image}}" class="thumbnail" height="70" width="70" style="display: inline;">   
@@ -34,13 +34,15 @@
                                        
                                        <div class="comm{{$feedback->id}}"> 
                                             @foreach($feedback->feedcomments as $comment)
-                                            <div class="uname">
+                                            <!-- <div class="comment{{$comment->id}}"> -->
+                                            <div class="uname" id="comment{{$comment->id}}">
                                                     <img src="{{ $comment->user->personal->image}}" id="profile"/>
                                                     <span><i class="fa fa-user" aria-hidden="true"></i></span>   by <a href="">{{$comment->user->name}}</a>
-                                                    <span>{{$comment-> content}}</span>
-                                                    <span><a id="feed" class="glyphicon glyphicon-pencil" href=""></a></span>
+                                                    <span class="content">{{$comment-> content}}</span>
+                                                    @if (Auth::user()->id == $comment->user_id)
+                                                    <span><a class="glyphicon glyphicon-pencil feed" data-rowid="{{ $comment->id }}" href=""></a></span>
                                                     <span><a  class="glyphicon glyphicon-trash" href="/feedcomment/{{$comment->id}}/delete"></a><span>
-                                            
+                                                    @endif
                                                 <!-- up -->
 
                                                 <form>
@@ -54,14 +56,27 @@
                                                     </button>
                                                </form>
                                             </div>
-                                           
-                                            <div class="formdiv hidden" > 
-                                            <h2> Here </h2>
+                                           <!--  </div> -->
+                                           <!-- edit comment-->
+                                            <div class="formdiv{{$comment->id}} hide form1" name="fatma" > 
+                                                    <form >
+                                                          <!--   <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
+                                                            <div class='form-group col-md-4'>
+                                                                    <input  class='form-control' type='text' name='content' class='form-control' id="comment{{$comment->id}}" value="{{$comment->content}}"/>
+                                                            </div>
+                                                            
+                                                            <div  class='form-group '>
+                                                                
+                                                                    <input type='submit' class='btn btn-primary feedcommentedit' value='Edit'  data-rowid="{{ $comment->id }}" data-rowtok="{{ csrf_token() }}"/>   
+                                                                    <input type='reset' class='btn btn-danger cancel' value="Cancel"/>  
+                                                            </div>
+                                                    </form>
                                             </div> 
                                             <br><hr>
                                         
-                                        <!--fatma /feedcomment/{{$feedback->id}}/add-->
+                                        
                                         @endforeach
+                                        <!--fatma /feedcomment/{{$feedback->id}}/add-->
                                          </div>
                                         <form >
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -77,9 +92,9 @@
 
 
 
-                               		</div>
+                                 </div>
 
-                               		</div>
+                            </div>
                                		
 	                        @endforeach
 	                        @endif
