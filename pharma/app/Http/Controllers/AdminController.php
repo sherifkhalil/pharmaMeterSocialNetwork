@@ -22,7 +22,8 @@ class AdminController extends Controller
    }
 	public function index(){
         $users = User::withTrashed()->get();
-        return view('admin.dashboard', compact('users'));
+        $from ='all';
+        return view('admin.dashboard', compact('users','from'));
     }
 
 	public function delete($id='')
@@ -31,7 +32,8 @@ class AdminController extends Controller
 			$user = User::withTrashed()->where('id', '=', $id)->first();
 			if ($user->deleted_at == null) {
 				$personal = Personal::withTrashed()->where('user_id', '=', $user->id)->first();
-				$personal->delete();
+				if($personal)
+					$personal->delete();
 				$user->delete();
 				$errors = '';
 			}
@@ -52,7 +54,8 @@ class AdminController extends Controller
 			if($user->trashed()) {
 				$user->restore();
 				$personal = Personal::withTrashed()->where('user_id', '=', $user->id)->first();
-				$personal->restore();
+				if ($personal)
+					$personal->restore();
 				$errors = '';
 			}
 			else{
@@ -118,6 +121,13 @@ class AdminController extends Controller
 		}
 		return view('requests.generate');
 	}
+
+	public function banned()
+    {
+      $users = User::onlyTrashed()->get();
+      $from ='banned';
+      return view('admin.dashboard', compact('users','from'));
+    }
 
 	// public function single($value='')
 	// {

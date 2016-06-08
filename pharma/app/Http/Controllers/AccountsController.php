@@ -85,8 +85,13 @@ class AccountsController extends Controller
     {
     	if($id!=''){
     		$request = Account::findOrFail($id);
-    		return view('requests.generate', compact('request'));
+    		if (!$request->trashed()) {
+    			if ($request->is_active == '0') {
+    				return view('requests.generate', compact('request'));
+    			}
+    		}	
     	}
+    	return back();
     }
 
     public function reject($id='')
@@ -98,7 +103,8 @@ class AccountsController extends Controller
     			$message = 'The Request Has Been Rejected Succesfully';
     		else
     			$message = 'The Request Has not been Rejected ' ;
-    		return view('requests.index', compact('request'));
+    		$requests = Account::where('is_active','0')->get();
+    		return view('requests.index', compact('requests','message'));
     	}
     }
 }

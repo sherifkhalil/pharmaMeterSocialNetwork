@@ -112,6 +112,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/users/restore/{id}', 'AdminController@restore');
     Route::get('/admin/users/generate', 'AdminController@generate');
     Route::post('/admin/users/generate', 'AdminController@generate');
+    Route::get('/admin/users/banned', 'AdminController@banned');
 
     Route::get('/admin/requests/accept/{id}', 'AccountsController@accept');
     Route::get('/admin/requests/reject/{id}', 'AccountsController@reject');
@@ -119,6 +120,7 @@ Route::group(['middleware' => 'admin'], function () {
     
     Route::get('/requests', 'AccountsController@requests');
     Route::get('/requests/accepted', 'AccountsController@accepted');
+    Route::get('/requests/rejected', 'AccountsController@rejected');
 
 
 });

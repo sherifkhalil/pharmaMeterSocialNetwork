@@ -39,6 +39,11 @@
     <div class="row col-xs-4 col-sm-10 col-xs-offset-1 custyle">
     <table class="table table-striped custab">
     <thead>
+    @if($from == 'all')
+    <a href="/admin/users/banned" class="btn btn-danger">Banned Users</a>
+    @elseif($from == 'banned')
+    <a href="/admin" class="btn btn-info">All Users</a>
+    @endif
     <a href="/admin/users/generate" class="btn btn-primary  pull-right"><b>+</b> Add new user</a>
         <tr>
             <th>ID</th>
