@@ -507,6 +507,7 @@ class ComposerStaticInit61d673b6c98df63d7274d79af2d0b627
     public static $classMap = array (
         'AddActiveToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_120129_add_active_to_users_table.php',
         'AddAdminToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_110514_add_admin_to_users_table.php',
+        'AddColumnsToPersonalDatasTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_07_094637_add_columns_to_personal_datas_table.php',
         'AddDealetdAtToCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_143336_add_dealetd_at_to_comments_table.php',
         'AddDealetdAtToPostsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_143343_add_dealetd_at_to_posts_table.php',
         'AddDeletedAtToFeedbacksTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_07_184010_add_deleted_at_to_feedbacks_table.php',

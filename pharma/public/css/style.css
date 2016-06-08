@@ -1177,7 +1177,7 @@ ul.pagenation li a:hover{
 .contact-form-row div:nth-child(3){
 	margin-right:0;
 }
-.contact-form-row2 textarea , .editcommentbox{
+.contact-form-row2 textarea , .editcommentbox , .editpost{
 	width:100%;
 	padding:1em;	
 	font-family: 'Droid Sans', sans-serif;
@@ -1199,6 +1199,10 @@ ul.pagenation li a:hover{
 	width:80%;
 	font-size:0.8em;
 	padding:0.2em;
+}
+.editpost{
+	width:80%;
+	min-height:20px;
 }
 .contact-form-row2 {
 	margin-top:1em;

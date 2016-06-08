@@ -38,13 +38,13 @@ class HomeController extends Controller
 
         $followers = follower::where('user_id',$user)->pluck('follower_id');
         /*get top user with max num of posts*/
-        $top_post_to_follow = Personal_data::whereNotIn('user_id', $followers)->where('user_id','!=', $user)->orderBy('no_posts', 'desc')->take(6)->get();
-        Session::put('top_post_to_follow', $top_post_to_follow);
+        $top_users_to_follow = Personal_data::whereNotIn('user_id', $followers)->where('user_id','!=', $user)->orderBy(DB::raw('no_posts + no_comments +no_commentups+no_postups'),'DESC')->take(4)->get();
+        Session::put('top_users_to_follow', $top_users_to_follow);
         /*get top user with max num of floowers */
-        $top_followers_to_follow = Personal_data::whereNotIn('user_id', $followers)->where('user_id','!=', $user)->orderBy('no_followers', 'desc')->take(6)->get();
-        Session::put('top_followers_to_follow',$top_followers_to_follow);
+        $top_interactive_to_follow = Personal_data::whereNotIn('user_id', $followers)->whereNotIn('user_id', $top_users_to_follow)->where('user_id','!=', $user)->orderBy('perentage', 'desc')->take(4)->get();
+        Session::put('top_interactive_to_follow',$top_interactive_to_follow);
         /*get all user with order num of floowers */
-        $top_to_follow = Personal_data::whereNotIn('user_id', $followers)->where('user_id','!=', $user)->orderBy('no_posts', 'desc')->get();
+        $top_to_follow = Personal_data::whereNotIn('user_id', $followers)->where('user_id','!=', $user)->orderBy(DB::raw('no_posts + no_comments +no_commentups+no_postups'),'DESC')->get();
         Session::put('top_to_follow', $top_to_follow);
         
         $posts = Post::whereIn('user_id', $followers)->orWhere('user_id',$user)->orderBy('created_at','DESC')->get();

@@ -100,23 +100,23 @@
                                         @if(Auth::user()->id == $post->user_id && Auth::user()->token == $post->user_token)
                                          <li>
                                             <span><i class="fa fa-pencil" aria-hidden="true"></i></span><a href="" data-toggle="modal" data-target=".edit{{$post->id}}">Edit</a>
-                                            <div class="modal alert alret-warning fade edit{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal fade edit{{$post->id}}" tabindex="-2" role="dialog" aria-labelledby="myModalLabel">
                                               <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                   <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     <h4 class="modal-title" id="myModalLabel">Edit post</h4>
                                                   </div>
-                                                  <!-- <form method="post" action="/edit/{{$post->id}}" enctype="multipart/form-data">
-                                                    {!! csrf_field() !!} -->
                                                   <div class="modal-body" style="height:250px">
-                                                   
+                                                   <!-- <img src="{{$post->image}}" width="270px" height="145px" class="pull-left" style="margin-bottom: 5px;"/>  
                                                     <div class=" btn  col-md-2 col-sm-2 uploadfile ">
-                                                        <img src="{{$post->image}}" width="270px" height="150px" />    
+                                                          
                                                         <i class="fa fa-picture-o" aria-hidden="true"></i> Upload another Photo
-                                                        <input type="file" name="image" class="upload" />
+                                                        <input type="file" name="image" class="upload pull-right" value="{{$post->image}}"/>
+
+                                                        
                                                     </div>
-                                                    <hr> 
+                                                    <hr>  -->
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" alt="">
                                                         <input type="hidden" class="edit_token" value="{{ csrf_token() }}">
@@ -129,7 +129,6 @@
                                                      <input  class='btn btn-sm btn-primary updatepost' type='submit' name='Add' value="Update"/>
                                                     
                                                 </div>
-                                                  <!-- </form> -->
                                                 </div>
                                               </div>
                                             </div>

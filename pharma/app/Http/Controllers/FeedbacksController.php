@@ -28,7 +28,8 @@ class FeedbacksController extends Controller
 			if(sizeof( $exist)>0)
 			{
 				#return Redirect::back()->with('error','you have already added your feedback');
-				return Redirect::back()->withErrors(['msg', 'you have already added your feedback']);
+				#return Redirect::back()->withErrors(['msg', 'you have already added your feedback']);
+				return 'exist' ;
 			}
 			$feedback = new Feedback;
 			$feedback->content = $request->content;

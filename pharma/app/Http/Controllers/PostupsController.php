@@ -49,7 +49,11 @@ class PostupsController extends Controller
 			$postup->created_at = Carbon::now();
 			$postup->save();
 			/*add the interavtive values*/
-			$post->user->personal->no_interactions +=1; // post owner interactives increase
+			$user->personal->no_postups +=1; // currunt user num of comment increase
+			$user->personal->save();
+
+			$post->user->personal->no_interactions +=1; // post owner interactives +
+			$post->user->personal->perentage = $post->user->personal->no_interactions / ($post->user->personal->no_posts + $post->user->personal->no_comments);
 			$post->user->personal->save();
 			// $done = 'commentd succssufully';
 			$result['like'] = "liked";

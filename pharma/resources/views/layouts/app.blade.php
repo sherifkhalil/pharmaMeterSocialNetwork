@@ -4,7 +4,7 @@
 <title>PHarmaMeter Social Network </title>
         <link href="{{ asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' /><link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
         <script src="{{ asset('js/jquery.min.js')}}"></script>
-        <script src="{{ asset('js/site.js')}}"></script>
+
          <!-- Custom Theme files -->
         <link href="{{ asset('css/style.css')}}" rel='stylesheet' type='text/css' />
          <!-- Custom Theme files -->
@@ -14,7 +14,7 @@
           addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
          </script>
          <!-- webfonts -->
-         <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+       <!--   <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'> -->
           <!-- webfonts -->
 
     
@@ -133,13 +133,13 @@
                                 <div class= "add ">
                                     <h3> Top following to follow ?  </h3>
                                 </div>
-                                @if(sizeof(session('top_post_to_follow'))<1)
+                                @if(sizeof(session('top_users_to_follow'))<1)
                                         <p class="p_nopost">
                                         -- no suggestion now --
                                         </p>
                                 @else
                                     </br>
-                                       @foreach( session('top_followers_to_follow') as $follow)
+                                       @foreach( session('top_users_to_follow') as $follow)
                                        <div class="uname ">
                                            <img src="{{$follow->image}}" id="profile"/>
                                             <span > <a href="/users/{{$follow->id}}"> {{$follow->user->name}}</a> </span>
@@ -155,11 +155,11 @@
                                 <div class= "add">
                                      <h3> Top Interactive to follow ?  </h3>
                                 </div>
-                                @if(sizeof(session('top_post_to_follow'))<1)
+                                @if(sizeof(session('top_interactive_to_follow'))<1)
                                     <p class="p_nopost">-- no suggestion now --</p>
                                 @else
                                 </br>
-                                   @foreach( session('top_post_to_follow') as $follow)
+                                   @foreach( session('top_interactive_to_follow') as $follow)
                                    <div class="uname ">
                                        <img src="{{ $follow->image}}" id="profile"/>
                                         <span > <a href="/users/{{$follow->id}}"> {{$follow->user->name}}</a> </span>
@@ -261,5 +261,9 @@
     <script src="{{asset('js/jquery.min.js')}}" ></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jsactions.js')}}"></script>
+<<<<<<< HEAD
     <script src="{{asset('js/feedbackup.js')}}"></script>
+=======
+    <script src="{{ asset('js/site.js')}}"></script>
+>>>>>>> c4dbf51e7aa034874ef093d374d3ae1543427768
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

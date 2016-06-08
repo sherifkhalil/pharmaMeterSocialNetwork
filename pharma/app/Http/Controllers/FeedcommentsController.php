@@ -12,7 +12,7 @@ use DB;
 
 class FeedcommentsController extends Controller
 {
-    public function add(Request $request,$id)
+    public function add(Request $request)
     {
 		/* set validation of post componants*/
         $this->validate($request, [
@@ -23,9 +23,12 @@ class FeedcommentsController extends Controller
 			$feedcomment = new Feedcomment;
 			$feedcomment->content = $request->content;
 			$feedcomment->user_id = $user_id;
-			$feedcomment->feedback_id=$id;
+			$feedcomment->feedback_id=$request->id;
+			 $feedcomment->no_ups = "0";
 			$feedcomment->save();
-			return back();
+			$image = $feedcomment->user->personal->image;
+			$uname = $feedcomment->user->name;
+			return [$feedcomment,$uname,$image,];
 
 	}
 	 public function delete($id)
@@ -47,12 +50,15 @@ class FeedcommentsController extends Controller
 
     public function up(Request $request)
 	{   
+
+			// return $request->input('comment');
 	    $comment_id = $request->input('comment');
 	    $user_id = Auth::user()->id;
-	    // echo "here";
+	   //  // echo "here";
 	    
 	    $conditions = ['feedcomment_id' => $comment_id, 'user_id' => $user_id];
 	    $result = DB::table('feedcommentups')->where($conditions)->first();
+	    // return $result;
 	    // var_dump($result);
 	  	if($result == null)
 	  	{
@@ -64,11 +70,11 @@ class FeedcommentsController extends Controller
 		   	$comment = Feedcomment::find($comment_id);
 		   	$comment->no_ups +=1;
 		   	$comment->update();
-		    return back();
+		    return 1;
 	  	}
 	  	else
 	  	{
-	  		return back();
+	  		return 0;
 	  	}
 	    
 
