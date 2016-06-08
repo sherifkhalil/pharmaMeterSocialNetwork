@@ -35,14 +35,14 @@ return array(
 
 
     'AddNumsToPersonalDatasTable' => $baseDir . '/database/migrations/2016_06_01_110539_add_nums_to_personal_datas_table.php',
-<<<<<<< HEAD
+
     'AddPasswordToPersonalDataTable' => $baseDir . '/database/migrations/2016_06_08_023724_add_password_to_personal_data_table.php',
     'AddSoftDeletesToAccountsTable' => $baseDir . '/database/migrations/2016_06_08_032958_add_softDeletes_to_accounts_table.php',
     'AddSoftDeletesToUserTable' => $baseDir . '/database/migrations/2016_06_04_101547_add_softDeletes_to_user_table.php',
     'AddVerifiedColumnsToUsersTable' => $baseDir . '/database/migrations/2016_06_04_003425_add_verified_columns_to_users_table.php',
-=======
+
     'AddTablePostups' => $baseDir . '/database/migrations/2016_06_05_121813_add_table_postups.php',
->>>>>>> 8ce38aa542af3bd06d9003e0e05bcd2da757610f
+
     'Cartalyst\\Sentry\\Groups\\GroupExistsException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\GroupNotFoundException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\NameRequiredException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
@@ -65,13 +65,13 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePersonalDatasTable' => $baseDir . '/database/migrations/2016_05_31_134628_create_personal_datas_table.php',
     'CreatePostTable' => $baseDir . '/database/migrations/2016_05_30_095622_create_Post_table.php',
-<<<<<<< HEAD
+
     'CreateTableAccounts' => $baseDir . '/database/migrations/2016_06_01_143559_create_table_accounts.php',
     'CreateTableAcounts' => $baseDir . '/database/migrations/2016_06_01_143217_create_table_accounts.php',
-=======
+
     'CreateRequestTable' => $baseDir . '/database/migrations/2016_05_29_140745_create_request_table.php',
     'CreateTableComments' => $baseDir . '/database/migrations/2016_06_05_134322_create_table_comments.php',
->>>>>>> 8ce38aa542af3bd06d9003e0e05bcd2da757610f
+
     'CreateTableFriends' => $baseDir . '/database/migrations/2016_05_31_085506_create_table_friends.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2016_05_29_140237_create_users_table.php',
     'CreateUsersVerificationsTable' => $baseDir . '/database/migrations/2016_06_04_003425_create_users_verifications_table.php',
