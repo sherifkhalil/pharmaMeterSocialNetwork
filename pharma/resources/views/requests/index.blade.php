@@ -2,7 +2,7 @@
 
 @section('content')
 @if(isset($message))
-<div style="text-align:center" class="">
+<div style="text-align:center" class="alert alert-success">
 {{$message}}
 </div>
 @endif
@@ -11,7 +11,7 @@
     <div class="row col-xs-4 col-sm-10 col-xs-offset-1 custyle">
     <table class="table table-striped custab">
     <thead>
-    <a href="/requests/accepted" class="btn btn-sm btn-success">Accepted Requests</a><a href="#" class="btn btn-sm btn-danger  pull-right">Rejected Requests</a>
+    <a href="/requests/accepted" class="btn btn-sm btn-success">Accepted Requests</a><a href="/requests/rejected" class="btn btn-sm btn-danger  pull-right">Rejected Requests</a>
         <tr>
             <th>ID</th>
             <th>Email</th>
