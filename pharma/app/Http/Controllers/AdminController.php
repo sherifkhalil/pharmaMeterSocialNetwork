@@ -30,7 +30,8 @@ class AdminController extends Controller
 		if (isset($id)){
 			$user = User::withTrashed()->where('id', '=', $id)->first();
 			if ($user->deleted_at == null) {
-				$user->personal->delete();
+				// $personal = Personal::withTrashed()->where('user_id', '=', $user->id)->first();
+				// $personal->delete();
 				$user->delete();
 				$errors = '';
 			}
@@ -112,10 +113,10 @@ class AdminController extends Controller
 					Account::find($request->get('account_id'))->delete();
 				}
 				$message = 'Account Has Been Generated Successfully !!';
-				return view('admin.generate',compact('message'));
+				return view('requests.generate',compact('message'));
 			}
 		}
-		return view('admin.generate');
+		return view('requests.generate');
 	}
 
 	// public function single($value='')

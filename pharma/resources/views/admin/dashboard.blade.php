@@ -54,7 +54,7 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->id_number}}</td>
-                <td class="text-center"><a class='btn btn-info btn-sm' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/admin/users/{{$user->trashed() ? 'restore' : 'delete'}}/{{$user->id}}" class="btn btn-sm {{$user->trashed() ? 'btn-success' : 'btn-danger' }}"><span class="glyphicon {{$user->trashed() ? 'glyphicon-ok' : 'glyphicon-remove' }}"></span>{{$user->trashed() ? 'Unban' : 'Ban'}} </a></td>
+                <td class="text-center"><a href="/admin/users/{{$user->trashed() ? 'restore' : 'delete'}}/{{$user->id}}" class="btn btn-sm {{$user->trashed() ? 'btn-success' : 'btn-danger' }}"><span class="glyphicon {{$user->trashed() ? 'glyphicon-ok' : 'glyphicon-remove' }}"></span>{{$user->trashed() ? 'Unban' : 'Ban'}} </a></td>
             </tr>
     @endforeach
     </table>

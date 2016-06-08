@@ -146,7 +146,8 @@
                                 <input type="submit" value="">
 
                             </form>
-                        </div>                         
+                        </div>
+                        @unless(Auth::user()->isAdmin())                         
                         <div class="blog-post" id="sub">
                             </br>
                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -171,6 +172,7 @@
                                 @endif
                                 <!-- <a class="twittbtn" href="#">See all users</a> -->
                             </div>
+                            
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class= "add">
                                      <h3> Top Interactive to follow ?  </h3>
@@ -192,6 +194,7 @@
                                <!--  <a class="twittbtn" href="#">See all users</a> -->
                             </div>
                         </div>
+                        @endunless
                         <!---//End-twitter-weight---->
                         <!---- start-tag-weight---->
                         <!-- <div class="b-tag-weight">

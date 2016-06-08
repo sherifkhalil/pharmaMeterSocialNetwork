@@ -68,6 +68,8 @@
 		//postUP routes ...
 		Route::post('/postup/add/{post}', 'PostupsController@store');
 
+		Route::post('/request', 'AccountsController@store');
+
 
 
 
@@ -112,9 +114,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/requests/accept/{id}', 'AccountsController@accept');
     Route::get('/admin/requests/reject/{id}', 'AccountsController@reject');
 
-    Route::post('/request', 'AccountsController@store');
+    
     Route::get('/requests', 'AccountsController@requests');
-    Route::get('/requests/accepted', 'AccountsController@accepted');
     Route::get('/requests/accepted', 'AccountsController@accepted');
 
 
