@@ -18,7 +18,6 @@ class CreateFeedbackupsTable extends Migration
             $table->foreign('feedback_id')->references('id')->on('feedbacks')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
             $table->timestamps();
         });
     }

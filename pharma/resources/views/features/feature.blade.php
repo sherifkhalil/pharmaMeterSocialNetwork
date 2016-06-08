@@ -12,26 +12,43 @@
 	                        <h2 id="title"> Research and development section </h2>
 	                        <h3 id="show"> {{$feature->name}}</h3>
 	                        <br>
-                            <div class="clearfix"> </div>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
+
                     	<div class='form-group form-group-sm ajax'>
 
+                    	<div class='form-group form-group-sm'>
+
 							@if(isset($feedbacks) && sizeof($feedbacks) >0)
-                            <h3 id="title">Feedbacks </h3>
+                            <h3 id="title">Feedbacks</h3>
                         	@foreach($feedbacks as $feedback)
                         	<div class="blog-artical">
+
 
 	                                <div class="alert alert-info" >
 	                                	 
 	                                	 
+
+	                                <div class="alert alert-info feedback">
+
                                     	<img src="{{$feedback->user->personal->image}}" class="thumbnail" height="70" width="70" style="display: inline;">   
-                                    	<span><a href="">{{$feedback->user->name}}</a></span>
+                                        <span><a href="">{{$feedback->user->name}}</a></span>
                                     	<span style="margin-left:15px;">{{$feedback->content}}</span>
                                     	<div class="pull-right">
-                                    	<span>{{$feedback->feedbackups->count()}} ups </span><span><a href="/feedbacks/up/{{$feedback->id}}" >Up</a> </span>
+                                    <!-- <a href="/feedbacks/delete/{{$feedback->id}}">Delete</a> -->
+                            @if(Auth::user()->id == $feedback->user->id)       
+                                 <button type="button" class="deletefeed" data-rowid="{{$feedback->id}}" >Delete</button>
+                            @endif
+                            @if(Auth::user()->id != $feedback->user->id)
+                                    <button type="button" class="feedup" data-rowid="{{$feedback->id}}" >Up</button>
+                                    <button type="button" class="feeddown" data-rowid="{{$feedback->id}}" >Down</button>
+                            @endif            
+                                        <span class="ups">{{$feedback->feedbackups->count()}} ups </span>
                                     	</div>
-                                       
+
+                                        <br>
+                                        <hr/>
                                        <div class="comm{{$feedback->id}}"> 
                                             @foreach($feedback->feedcomments as $comment)
                                             <!-- <div class="comment{{$comment->id}}"> -->
@@ -44,6 +61,7 @@
                                                     <span><a  class="glyphicon glyphicon-trash" href="/feedcomment/{{$comment->id}}/delete"></a><span>
                                                     @endif
                                                 <!-- up -->
+
 
                                                 <form>
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -76,7 +94,13 @@
                                         
                                         
                                         @endforeach
+
                                         <!--fatma /feedcomment/{{$feedback->id}}/add-->
+
+
+                                       <!--  <form  method='post' action = "/feedcomment/{{$feedback->id}}/add" > -->
+
+
                                          </div>
                                         <form >
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -86,7 +110,11 @@
                                                 
                                                 <div  class='form-group '>
                                                     
+
+                                                        <input type='submit' class='btn btn-primary ' value='add'/>   
+
                                                         <input type='submit' class='btn btn-primary feedcomment' value='Commet'  data-rowid="{{ $feedback->id }}" data-rowtok="{{ csrf_token() }}"/>   
+
                                                 </div>
                                         </form>
 
@@ -96,11 +124,12 @@
 
                             </div>
                                		
-	                        @endforeach
+                            @endforeach
 	                        @endif
+
                             <!--enas-->
                             <div class="col-md-12 pull-left">
-                                <form method="post" action="/feedbacks/add/{{$feature->id}}" id="feedback_up">
+                                <form >
                                     {!! csrf_field() !!}
                                     <div class='col-xs-12 col-md-12' >
                                         <div class='form-control pull-left addcomment' >
@@ -109,10 +138,10 @@
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                             	<img class="col-md-2 col-sm-2 col-xs-2 pull-left" src="{{Auth::user()->personal->image }}" alt="">
                                             	<textarea  class="col-md-10 col-sm-10 col-xs-7" name='content'  placeholder="add feedback ..."></textarea>
-                                            	<input type="hidden" name="feedback_id" value="{{ $feedback->id }}">
+                                            	<input type="hidden" name="feature_id" value="{{ $feature->id }}">
                                             </div>
                                             <hr>   
-                                            <input class='col-xs-2 pull-right btn btn-sm btn-primary' type='submit' name='Add' value="Comment"/>
+                                            <input class='col-xs-2 pull-right btn btn-sm btn-primary feed' type='submit' name='Add' value="Add" />
                                         </div> 
                                          @if($errors->any())
 										<h4>{{$errors->first()}}</h4>
@@ -126,8 +155,7 @@
 
 
                         </div>
-             
 
-    </div>
-</div>                       
+                </div>                     
+
 @endsection

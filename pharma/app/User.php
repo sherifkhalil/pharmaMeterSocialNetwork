@@ -3,6 +3,7 @@
 namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Request ;
+use Illuminate\Database\Eloquent\SoftDeletes;
 // use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 // use Illuminate\Auth\Authenticatable;
 // use Illuminate\Auth\Passwords\CanResetPassword;
@@ -45,6 +46,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+
 
     public function isAdmin()
     {
@@ -86,6 +90,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Postup::class,'user_id');
     }
+
 
 
 

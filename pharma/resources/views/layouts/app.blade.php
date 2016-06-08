@@ -17,6 +17,25 @@
        <!--   <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'> -->
           <!-- webfonts -->
 
+        <script src="{{ asset('js/vendor/jquery-1.11.0.min.js')}}"></script>
+        <script src="{{ asset('js/vendor/jquery.gmap3.min.js')}}"></script>
+        <script src="{{ asset('js/plugins.js')}}"></script>
+        <script src="{{ asset('js/main.js')}}"></script>
+        
+        <script src="{{ asset('js/responsiveslides.min.js')}}"></script>
+        <script>
+            $(function () {
+              $("#slider").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+              });
+              $('.error').delay(5000).fadeOut('slow');
+            });
+            
+          </script>
     
 </head>
 <body>
@@ -44,12 +63,13 @@
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a>
                             </li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/request') }}">Request Account</a></li>
                         @else
                             <li><a href="/users/{{ Auth::user()->id }}" >
                                 <img width="30px" height="20px" src="{{ Auth::user()->personal->image }}" alt=""> {{ Auth::user()->name }} </a>
                             @if(Auth::user()->isAdmin())
-                            <li><a href="#">Dashboard</a>
+                            <li><a href="/admin">Dashboard</a>
+                            <li><a href="/requests">Requests</a>
                             @endif
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                                
@@ -126,9 +146,11 @@
                                 <input type="submit" value="">
 
                             </form>
-                        </div>                         
+                        </div>
+                                                
                         <div class="blog-post" id="sub">
                             </br>
+                            @unless(Auth::user()->isAdmin()) 
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class= "add ">
                                     <h3> Top following to follow ?  </h3>
@@ -151,6 +173,7 @@
                                 @endif
                                 <!-- <a class="twittbtn" href="#">See all users</a> -->
                             </div>
+                            
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class= "add">
                                      <h3> Top Interactive to follow ?  </h3>
@@ -170,7 +193,10 @@
                                    @endforeach
                                @endif
                                <!--  <a class="twittbtn" href="#">See all users</a> -->
+                               
                             </div>
+                            @endunless
+                           
                         </div>
                         <!---//End-twitter-weight---->
                         <!---- start-tag-weight---->
@@ -261,5 +287,9 @@
     <script src="{{asset('js/jquery.min.js')}}" ></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jsactions.js')}}"></script>
+
+    <script src="{{asset('js/feedbackup.js')}}"></script>
+
     <script src="{{ asset('js/site.js')}}"></script>
+    <script src="{{ asset('js/showpassword.js')}}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

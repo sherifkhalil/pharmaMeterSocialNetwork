@@ -18,7 +18,6 @@ class CreateFeatureupsTable extends Migration
             $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
             $table->timestamps();
         });
     }
