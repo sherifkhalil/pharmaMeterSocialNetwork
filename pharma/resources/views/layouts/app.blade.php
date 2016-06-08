@@ -4,21 +4,24 @@
 <title>PHarmaMeter Social Network </title>
         <link href="{{ asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' /><link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
         <script src="{{ asset('js/jquery.min.js')}}"></script>
+
          <!-- Custom Theme files -->
         <link href="{{ asset('css/style.css')}}" rel='stylesheet' type='text/css' />
          <!-- Custom Theme files -->
          <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta name="csrf-token" content="{{ csrf_token() }}">
          <script type="application/x-javascript">
           addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
          </script>
          <!-- webfonts -->
-         <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+       <!--   <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'> -->
           <!-- webfonts -->
+
         <script src="{{ asset('js/vendor/jquery-1.11.0.min.js')}}"></script>
         <script src="{{ asset('js/vendor/jquery.gmap3.min.js')}}"></script>
         <script src="{{ asset('js/plugins.js')}}"></script>
         <script src="{{ asset('js/main.js')}}"></script>
-        <script src="{{ asset('js/showpassword.js')}}"></script>
+        
         <script src="{{ asset('js/responsiveslides.min.js')}}"></script>
         <script>
             $(function () {
@@ -56,6 +59,7 @@
                             <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="{{ url('/') }}">About</a></li>
                             <li><a href="{{ url('/') }}">Services</a></li>
+                            <li><a href="{{ url('features') }}">R & D</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a>
                             </li>
@@ -92,10 +96,46 @@
         <!-- Blog -->
         <div class="blog">
             <div class="container-fluied">
+            @if (count($errors) > 0)
+                        <div class="alert alert-danger error" style="margin:10px">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>
+                                    {{ $error}}
+                                </li>
+                                @endforeach
+                            </ul>
+                            </div>
+                        @elseif(session('errors'))
+                        <div class="alert alert-danger error" style="margin:10px">
+                            <ul>
+                                @foreach(session('errors') as $error)
+                                <li>
+                                    {{ $error}}
+                                </li>
+                                @endforeach
+                                {{Session::forget('errors')}}
+                            </ul>
+                            </div>
+                        @elseif(session('error'))
+                            <div class='alert alert-danger error'>
+                                {{ session('error') }}
+                                {{ Session::forget('error') }}
+
+                            </div>
+                        @elseif(session('done'))
+                            <div class='alert alert-success error'>
+                                {{session('done')}}
+                                {{Session::forget('done')}}
+
+                            </div>
+
+                        @endif
 
            
 <!-- header -->
     @yield('content')
+    @if(Auth::user())
      <!---//End-blog-pagenate---->
                 </div>
                 <div class="twitter-weights">
@@ -107,42 +147,71 @@
 
                             </form>
                         </div>                         
-                    <div class="blog-post" id="sub">
-                    </br>
-                     <div id= "add"> <h3> People you may know ?  </h3></div></br>
-                       <div class="uname">
-                           <img src="{{ asset('images/1.png')}}" id="profile"/>
-                            <span > <a href="#"> Username</a> </span>
-                            <span id="follow"> <a href="#"> Follow </a> </span>
+                        <div class="blog-post" id="sub">
+                            </br>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class= "add ">
+                                    <h3> Top following to follow ?  </h3>
+                                </div>
+                                @if(sizeof(session('top_users_to_follow'))<1)
+                                        <p class="p_nopost">
+                                        -- no suggestion now --
+                                        </p>
+                                @else
+                                    </br>
+                                       @foreach( session('top_users_to_follow') as $follow)
+                                       <div class="uname ">
+                                           <img src="{{$follow->image}}" id="profile"/>
+                                            <span > <a href="/users/{{$follow->id}}"> {{$follow->user->name}}</a> </span>
+                                            <button  class=" btn btn-xs btn-success follow" value="{{$follow->id}}"> Follow </button>
+                                            <input type="hidden" class="token" value="{{ csrf_token() }}">
 
-                       </div>
-                       <div class="uname">
-                           <img src="{{ asset('images/1.png')}}" id="profile"/>
-                            <span > <a href="#"> Username</a> </span>
-                            <span id="follow"> <a href="#"> Follow </a> </span>
-                       </div>
-                        <a class="twittbtn" href="#">See all users</a>
-                    </div>
-                    <!---//End-twitter-weight---->
-                    <!---- start-tag-weight---->
-                    <!-- <div class="b-tag-weight">
-                        <h3>Tags Weight</h3>
-                        <ul>
-                            <li><a href="#">Lorem</a></li>
-                            <li><a href="#">consectetur</a></li>
-                            <li><a href="#">dolore</a></li>
-                            <li><a href="#">aliqua</a></li>
-                            <li><a href="#">sit amet</a></li>
-                            <li><a href="#">ipsum</a></li>
-                            <li><a href="#">Lorem</a></li>
-                            <li><a href="#">consectetur</a></li>
-                            <li><a href="#">dolore</a></li>
-                            <li><a href="#">aliqua</a></li>
-                            <li><a href="#">sit amet</a></li>
-                            <li><a href="#">ipsum</a></li>
-                        </ul>
-                    </div> -->
-                    <!---- //End-tag-weight---->
+                                       </div>
+                                       @endforeach
+                                @endif
+                                <!-- <a class="twittbtn" href="#">See all users</a> -->
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class= "add">
+                                     <h3> Top Interactive to follow ?  </h3>
+                                </div>
+                                @if(sizeof(session('top_interactive_to_follow'))<1)
+                                    <p class="p_nopost">-- no suggestion now --</p>
+                                @else
+                                </br>
+                                   @foreach( session('top_interactive_to_follow') as $follow)
+                                   <div class="uname ">
+                                       <img src="{{ $follow->image}}" id="profile"/>
+                                        <span > <a href="/users/{{$follow->id}}"> {{$follow->user->name}}</a> </span>
+                                         <button  class=" btn btn-xs btn-success follow" value="{{$follow->id}}"> Follow </button>
+                                        <input type="hidden" class="token" value="{{ csrf_token() }}">
+
+                                   </div>
+                                   @endforeach
+                               @endif
+                               <!--  <a class="twittbtn" href="#">See all users</a> -->
+                            </div>
+                        </div>
+                        <!---//End-twitter-weight---->
+                        <!---- start-tag-weight---->
+                        <!-- <div class="b-tag-weight">
+                            <h3>Tags Weight</h3>
+                            <ul>
+                                <li><a href="#">Lorem</a></li>
+                                <li><a href="#">consectetur</a></li>
+                                <li><a href="#">dolore</a></li>
+                                <li><a href="#">aliqua</a></li>
+                                <li><a href="#">sit amet</a></li>
+                                <li><a href="#">ipsum</a></li>
+                                <li><a href="#">Lorem</a></li>
+                                <li><a href="#">consectetur</a></li>
+                                <li><a href="#">dolore</a></li>
+                                <li><a href="#">aliqua</a></li>
+                                <li><a href="#">sit amet</a></li>
+                                <li><a href="#">ipsum</a></li>
+                            </ul>
+                        </div> -->
+                        <!---- //End-tag-weight---->
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -150,6 +219,7 @@
             </div>
         </div>
         </div>
+    @endif
         <!-- /Blog -->
          {{-- end of posts --}}
             
@@ -158,19 +228,6 @@
 <!-- footer sector -->
         </div><!-- /container -->
     </div><!-- /Blog -->        
-    {{-- <!-- team-grids-caption -->
-    <div class="team-grids-caption">
-        <div class="container">
-            <div class="team-grids-caption-left">
-                <h4>He point of using Lorem Ipsum is that</h4>
-                <p>as opposed to using Many desktop publishing packages and web page editors now use </p>
-            </div>
-            <div class="team-grids-caption-right">
-                <a class="team-btn" href="contact.html">Contact</a>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div> --}}
 <!-- team-grids-caption -->
 <!-- footer -->
     <div class="footer navbar navbar-default navbar-static-bottom">
@@ -217,7 +274,16 @@
 </html>
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <!-- <script src="{{ asset('js/vendor/jquery-1.11.0.min.js')}}"></script> -->
+    <script src="{{ asset('js/vendor/jquery.gmap3.min.js')}}"></script>
+    <script src="{{ asset('js/plugins.js')}}"></script>
+    <script src="{{ asset('js/jquery-1.12.3.js')}}"></script>
+    <script src="{{asset('js/jquery.min.js')}}" ></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/jsactions.js')}}"></script>
 
+    <script src="{{asset('js/feedbackup.js')}}"></script>
+
+    <script src="{{ asset('js/site.js')}}"></script>
+    <script src="{{ asset('js/showpassword.js')}}"></script>
+    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

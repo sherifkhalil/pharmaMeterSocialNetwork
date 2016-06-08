@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -79,6 +78,10 @@ $max = App\Flight::where('active', 1)->max('price');*/
 #overload login of Auth
     public function login(Request $request){
         
+         $this->validate($request, [
+            'email' => 'required', 'password' => 'required',
+        ]);
+
         if (\Auth::attempt(['id_number' => $request->email, 'password' => $request->password])) {
           if(\Auth::user()->isAdmin()){
 
@@ -86,7 +89,7 @@ $max = App\Flight::where('active', 1)->max('price');*/
             }
             else{
             return redirect('/');
-        }
+            }
         } 
 
         elseif (\Auth::attempt(['email'=> $request->email, 'password' => $request->password])) {
@@ -95,17 +98,19 @@ $max = App\Flight::where('active', 1)->max('price');*/
 
                 return redirect('/admin');
             }
-            else{
+            else{   
             return redirect('/'); 
-        }
+            }
         } 
 
-
-        else {
-                #echo "fail!";
-                return redirect('/login')->withErrors([
-                'errors' => 'These credentials do not match our records.',
-            ]); 
+        else{
+            return redirect('/login')
+                ->withInput($request->only('email'))
+                ->withErrors([
+                    'email' => 'These credentials do not match our records.',
+                ]);
         }
     }
+
+
 }

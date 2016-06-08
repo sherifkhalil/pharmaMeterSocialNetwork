@@ -8,12 +8,41 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddActiveToUsersTable' => $baseDir . '/database/migrations/2016_06_01_120129_add_active_to_users_table.php',
     'AddAdminToUsersTable' => $baseDir . '/database/migrations/2016_06_01_110514_add_admin_to_users_table.php',
+
+    'AddColumnsToPersonalDatasTable' => $baseDir . '/database/migrations/2016_06_07_094637_add_columns_to_personal_datas_table.php',
+    'AddDealetdAtToCommentsTable' => $baseDir . '/database/migrations/2016_06_05_143336_add_dealetd_at_to_comments_table.php',
+    'AddDealetdAtToPostsTable' => $baseDir . '/database/migrations/2016_06_05_143343_add_dealetd_at_to_posts_table.php',
+    'AddDeletedAtToFeedbacksTable' => $baseDir . '/database/migrations/2016_06_07_184010_add_deleted_at_to_feedbacks_table.php',
+    'AddNameToRequestsTable' => $baseDir . '/database/migrations/2016_06_01_120104_add_name_to_requests_table.php',
+
     'AddNameToUsersTable' => $baseDir . '/database/migrations/2016_05_29_141359_add_name_to_users_table.php',
+    'AddNewNumsToUsersTable' => $baseDir . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
+    'AddNoupsFieldToFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
+
+
+
+    'AddNoupsFieldToFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
+
+    'AddNewNumsToUsersTable' => $baseDir . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
+
+
+    'AddNoupsFieldToFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
+    'AddNewNumsToUsersTable' => $baseDir . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
+
+
+    'AddNewNumsToUsersTable' => $baseDir . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
+    'AddNoupsFieldToFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
+
+
     'AddNumsToPersonalDatasTable' => $baseDir . '/database/migrations/2016_06_01_110539_add_nums_to_personal_datas_table.php',
+<<<<<<< HEAD
     'AddPasswordToPersonalDataTable' => $baseDir . '/database/migrations/2016_06_08_023724_add_password_to_personal_data_table.php',
     'AddSoftDeletesToAccountsTable' => $baseDir . '/database/migrations/2016_06_08_032958_add_softDeletes_to_accounts_table.php',
     'AddSoftDeletesToUserTable' => $baseDir . '/database/migrations/2016_06_04_101547_add_softDeletes_to_user_table.php',
     'AddVerifiedColumnsToUsersTable' => $baseDir . '/database/migrations/2016_06_04_003425_add_verified_columns_to_users_table.php',
+=======
+    'AddTablePostups' => $baseDir . '/database/migrations/2016_06_05_121813_add_table_postups.php',
+>>>>>>> 8ce38aa542af3bd06d9003e0e05bcd2da757610f
     'Cartalyst\\Sentry\\Groups\\GroupExistsException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\GroupNotFoundException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
     'Cartalyst\\Sentry\\Groups\\NameRequiredException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
@@ -27,11 +56,22 @@ return array(
     'Cartalyst\\Sentry\\Users\\UserNotFoundException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
     'Cartalyst\\Sentry\\Users\\WrongPasswordException' => $vendorDir . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
     'CreateAdminsTable' => $baseDir . '/database/migrations/2016_05_30_180139_create_admins_table.php',
+    'CreateFeaturesTable' => $baseDir . '/database/migrations/2016_06_04_163458_create_features_table.php',
+    'CreateFeatureupsTable' => $baseDir . '/database/migrations/2016_06_04_164218_create_featureups_table.php',
+    'CreateFeedbacksTable' => $baseDir . '/database/migrations/2016_06_04_163551_create_feedbacks_table.php',
+    'CreateFeedbackupsTable' => $baseDir . '/database/migrations/2016_06_04_164539_create_feedbackups_table.php',
+    'CreateFeedcommentsTable' => $baseDir . '/database/migrations/2016_06_04_163814_create_feedcomments_table.php',
+    'CreateFeedcommentupsTable' => $baseDir . '/database/migrations/2016_06_04_164638_create_feedcommentups_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePersonalDatasTable' => $baseDir . '/database/migrations/2016_05_31_134628_create_personal_datas_table.php',
     'CreatePostTable' => $baseDir . '/database/migrations/2016_05_30_095622_create_Post_table.php',
+<<<<<<< HEAD
     'CreateTableAccounts' => $baseDir . '/database/migrations/2016_06_01_143559_create_table_accounts.php',
     'CreateTableAcounts' => $baseDir . '/database/migrations/2016_06_01_143217_create_table_accounts.php',
+=======
+    'CreateRequestTable' => $baseDir . '/database/migrations/2016_05_29_140745_create_request_table.php',
+    'CreateTableComments' => $baseDir . '/database/migrations/2016_06_05_134322_create_table_comments.php',
+>>>>>>> 8ce38aa542af3bd06d9003e0e05bcd2da757610f
     'CreateTableFriends' => $baseDir . '/database/migrations/2016_05_31_085506_create_table_friends.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2016_05_29_140237_create_users_table.php',
     'CreateUsersVerificationsTable' => $baseDir . '/database/migrations/2016_06_04_003425_create_users_verifications_table.php',

@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -52,10 +53,12 @@ return [
     | You may wish for all e-mails sent by your application to be sent from
     | the same address. Here, you may specify a name and address that is
     | used globally for all e-mails that are sent by your application.
-    |
+    |    'from' => ['address' => 'laravel502@gmail.com', 'name' => 'pharma'],
+        GMAIL_USERNAME=project.rails5@gmail.com
+GMAIL_PASSWORD=rails123456
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'laravel502@gmail.com', 'name' => 'laravel'],
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +111,6 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+    'pretend' => false,
 
 ];

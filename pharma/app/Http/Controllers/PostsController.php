@@ -20,18 +20,19 @@ use Illuminate\Support\Facades\Validator;
 class PostsController extends Controller
 {
     public function show($id){
-		$post = Post::where('is_published', '1')->find($id);
+		$post = Post::find($id);
 		if(sizeof($post) > 0)
 		{
 			// increase view by 1 
 			// $post ->views_num +=1 ;
 			// $post ->save();
-			return view ('pages.single',compact('post'));
+			// return view ('pages.single',compact('post'));
+			return $post;
 		}
 		else
 		{
-			$errors = "this page isnt avalible!!";	
-			Redirect::to('/errors/404')->with('errors');
+			Session::put('error',  "this page isnt avalible!!");	
+			Redirect::to('/errors/404');
 		}
 			
 
@@ -45,10 +46,8 @@ class PostsController extends Controller
 		]);
 		if($validator->fails())
 		{// validator dosn't work
-			$errors = $validator->messages();
-			// $posts = Post::orderBy('created_at','DESC')->get();
-			return Redirect::to('/')->with('errors');
-			// return "error";
+			Session::put('errors',  $validator->messages());
+			return Redirect::back();
 		}
 		else
 		{
@@ -72,8 +71,8 @@ class PostsController extends Controller
 				$post->save();
 				$user->personal->no_posts +=1;
 				$user->personal->save();
-				$done = 'post add succssufully';
-			    return Redirect::to('/')->with('done');
+			    Session::put('done',  'post add succssufully');
+				return Redirect::back();
 			}
 			else 
 			{
@@ -81,11 +80,37 @@ class PostsController extends Controller
 				$post->save();
 				$user->personal->no_posts +=1;
 				$user->personal->save();
-				$done = 'post add succssufully';
-			    return Redirect::to('/')->with('done');
+				Session::put('done',  'post add succssufully');
+				return Redirect::back();
 			}
 		}//end of valid validator
 	}// end of store action
+
+	public function append($post_id,Request $request){
+		$post = Post::find($post_id);
+		if (Auth::user() && Auth::user()->id == $post->user_id && Auth::user()->token == $post->user_token)
+		{
+			if(sizeof($post) > 0)
+			{
+				$post->content =$request->content;
+				$post->updated_at = Carbon::now();
+				$post->save();
+				// Session::put('done',  'post deleted succssufully..');
+				return $post;
+			}
+			else
+			{
+				Session::put('error',"something went wrong, please try again after while..");
+				Redirect::to('/errors/404');
+			}
+		}
+		else
+		{
+			Session::put('error',  "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!");	
+			Redirect::to('/errors/404');
+		}
+	}//end of destroy action
+
 	public function destroy($id){
 		$post = Post::find($id);
 		if (Auth::user() && Auth::user()->id == $post->user_id && Auth::user()->token == $post->user_token)
@@ -95,19 +120,19 @@ class PostsController extends Controller
 				$post->user->personal->no_posts -=1;
 				$post->user->personal->save();
 				$post->delete();
-				$done = 'post deleted succssufully..';
-				return Redirect::to('/')->with('done');
+				Session::put('done',  'post deleted succssufully..');
+				return Redirect::back();
 			}
 			else
 			{
-				$errors = "something went wrong, please try again after while..";
-				Redirect::to('/errors/404')->with('errors');
+				Session::put('error',"something went wrong, please try again after while..");
+				Redirect::to('/errors/404');
 			}
 		}
 		else
 		{
-			$errors = "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!";
-			Redirect::to('/errors/404')->with('errors');
+			Session::put('error',  "You are not authorize to be here, sorry for disapoint you, we are SECUIRE!!!");	
+			Redirect::to('/errors/404');
 		}
 	}//end of destroy action
 }

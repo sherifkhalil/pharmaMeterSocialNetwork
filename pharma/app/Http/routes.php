@@ -24,43 +24,56 @@
 
  Route::group(['middleware' => ['web']], function () {
 
-		// Route::get('/', function () {
-		//     return view('index');
-		// });
+
 		Route::auth();
 		Route::get('/', 'HomeController@index');
-		#Route::get('/admin','AdminController@index');
 		//post routes ...
 		Route::get('posts/{post}', 'PostsController@show');
 		Route::post('posts/add', 'PostsController@store');
 		Route::put('edit/{post}', 'PostsController@append');
 		Route::get('delete/{post}', 'PostsController@destroy');
-
+		//user routes ...
+		Route::get('/users/index', 'UsersController@index');
 		Route::get('/users/{User}', 'UsersController@profile');
+		Route::get('/users/{User}/profiledetails', 'UsersController@details');
 		Route::get('/users/{User}/editprofile', 'UsersController@edit');
 		Route::patch('/users/{User}/update', 'UsersController@update');
 
+        //follow routes ...
+        Route::post('/follow/{follower_id}', 'FollowersController@store');
+        Route::post('/unfollow/{follower_id}', 'FollowersController@destroy');
+		
+		//R&D routes ...
+		Route::get('features', 'FeaturesController@index');
+		Route::get('features/{feature}', 'FeaturesController@feature');
+		Route::post('feedbacks/{feature}', 'FeedbacksController@store');
+		Route::get('feedbacks/delete/{feature}', 'FeedbacksController@destroy');
 
-        Route::get('/admin', 'AdminController@index');
-        Route::get('/admin/users/delete/{id}', 'AdminController@delete');
-        Route::get('/admin/users/restore/{id}', 'AdminController@restore');
-        Route::get('/admin/users/generate', 'AdminController@generate');
-        Route::post('/admin/users/generate', 'AdminController@generate');
-
-        Route::get('/admin/requests/accept/{id}', 'AccountsController@accept');
-        Route::get('/admin/requests/reject/{id}', 'AccountsController@reject');
-
-        Route::post('/request', 'AccountsController@store');
-        Route::get('/requests', 'AccountsController@requests');
-        Route::get('/requests/accepted', 'AccountsController@accepted');
-        Route::get('/requests/accepted', 'AccountsController@accepted');
+		Route::post('feedcomment/{feedback}/add', 'FeedcommentsController@add');
+		Route::get('feedcomment/{comment}/delete', 'FeedcommentsController@delete');
+		Route::post('/feedcomment/up','FeedcommentsController@up');
+		
+		// Route::post('/feedcomment/up',function(){
+		// 	return 'sdfsd';
+		// });
 
 
-	
+		Route::get('feedbacks/up/{feature}', 'FeedbacksController@feedbackUp');
+		Route::get('feedbacks/down/{feature}', 'FeedbacksController@feedbackDown');
+		
+		//comment routes ...
+		Route::post('comment/add/{post}', 'CommentsController@store');
+		Route::put('comment/edit/{comment}', 'CommentsController@append');
+		Route::get('delete/{comment}', 'CommentsController@destroy');
+		//postUP routes ...
+		Route::post('/postup/add/{post}', 'PostupsController@store');
+
+
 
 
 
  }); 
+
 
 
 
@@ -81,3 +94,29 @@ Route::get('verify/{token?}', [
     'uses' => 'Auth\VerifyController@verify',
     'as' => 'verification.verify',
 ]);
+
+Route::group(['middleware' => 'admin'], function () {
+
+    //R&D routes ...
+    //url -> /features/add
+    Route::post('features/add', 'FeaturesController@add');
+    //url -> /features/{{$feature->id}}/delete
+	Route::get('features/{feature}/delete', 'FeaturesController@delete');
+
+	Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/users/delete/{id}', 'AdminController@delete');
+    Route::get('/admin/users/restore/{id}', 'AdminController@restore');
+    Route::get('/admin/users/generate', 'AdminController@generate');
+    Route::post('/admin/users/generate', 'AdminController@generate');
+
+    Route::get('/admin/requests/accept/{id}', 'AccountsController@accept');
+    Route::get('/admin/requests/reject/{id}', 'AccountsController@reject');
+
+    Route::post('/request', 'AccountsController@store');
+    Route::get('/requests', 'AccountsController@requests');
+    Route::get('/requests/accepted', 'AccountsController@accepted');
+    Route::get('/requests/accepted', 'AccountsController@accepted');
+
+
+});
+

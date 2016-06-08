@@ -495,12 +495,25 @@ class ComposerStaticInit61d673b6c98df63d7274d79af2d0b627
     public static $classMap = array (
         'AddActiveToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_120129_add_active_to_users_table.php',
         'AddAdminToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_110514_add_admin_to_users_table.php',
+
+        'AddColumnsToPersonalDatasTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_07_094637_add_columns_to_personal_datas_table.php',
+        'AddDealetdAtToCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_143336_add_dealetd_at_to_comments_table.php',
+        'AddDealetdAtToPostsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_143343_add_dealetd_at_to_posts_table.php',
+        'AddDeletedAtToFeedbacksTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_07_184010_add_deleted_at_to_feedbacks_table.php',
+        'AddNameToRequestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_120104_add_name_to_requests_table.php',
+
         'AddNameToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_29_141359_add_name_to_users_table.php',
+        'AddNewNumsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_122811_add_new_nums_to_users_table.php',
+        'AddNoupsFieldToFeedcommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_174022_add_noups_field_to_feedcomments_table.php',
         'AddNumsToPersonalDatasTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_110539_add_nums_to_personal_datas_table.php',
+
         'AddPasswordToPersonalDataTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_08_023724_add_password_to_personal_data_table.php',
         'AddSoftDeletesToAccountsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_08_032958_add_softDeletes_to_accounts_table.php',
         'AddSoftDeletesToUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_101547_add_softDeletes_to_user_table.php',
         'AddVerifiedColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_003425_add_verified_columns_to_users_table.php',
+
+        'AddTablePostups' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_121813_add_table_postups.php',
+
         'Cartalyst\\Sentry\\Groups\\GroupExistsException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
         'Cartalyst\\Sentry\\Groups\\GroupNotFoundException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
         'Cartalyst\\Sentry\\Groups\\NameRequiredException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Groups/Exceptions.php',
@@ -514,11 +527,22 @@ class ComposerStaticInit61d673b6c98df63d7274d79af2d0b627
         'Cartalyst\\Sentry\\Users\\UserNotFoundException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
         'Cartalyst\\Sentry\\Users\\WrongPasswordException' => __DIR__ . '/..' . '/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php',
         'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_180139_create_admins_table.php',
+        'CreateFeaturesTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_163458_create_features_table.php',
+        'CreateFeatureupsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_164218_create_featureups_table.php',
+        'CreateFeedbacksTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_163551_create_feedbacks_table.php',
+        'CreateFeedbackupsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_164539_create_feedbackups_table.php',
+        'CreateFeedcommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_163814_create_feedcomments_table.php',
+        'CreateFeedcommentupsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_164638_create_feedcommentups_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePersonalDatasTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_31_134628_create_personal_datas_table.php',
         'CreatePostTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_095622_create_Post_table.php',
+
         'CreateTableAccounts' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_143559_create_table_accounts.php',
         'CreateTableAcounts' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_143217_create_table_accounts.php',
+
+        'CreateRequestTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_29_140745_create_request_table.php',
+        'CreateTableComments' => __DIR__ . '/../..' . '/database/migrations/2016_06_05_134322_create_table_comments.php',
+
         'CreateTableFriends' => __DIR__ . '/../..' . '/database/migrations/2016_05_31_085506_create_table_friends.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_29_140237_create_users_table.php',
         'CreateUsersVerificationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_003425_create_users_verifications_table.php',
