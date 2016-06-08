@@ -20,8 +20,8 @@
         "uxweb/sweet-alert": "^1.1",
         "hisorange/browser-detect": "^2.0",
         "rydurham/sentinel": "~2.0@dev",
-        "jenssegers/mongodb": "^3.0",
-        "guzzlehttp/guzzle": "~5.3|~6.0"
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "edvinaskrucas/laravel-user-email-verification": "^1.0"
 
     },
     "require-dev": {

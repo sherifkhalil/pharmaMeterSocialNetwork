@@ -18,6 +18,7 @@
         <script src="{{ asset('js/vendor/jquery.gmap3.min.js')}}"></script>
         <script src="{{ asset('js/plugins.js')}}"></script>
         <script src="{{ asset('js/main.js')}}"></script>
+        <script src="{{ asset('js/showpassword.js')}}"></script>
         <script src="{{ asset('js/responsiveslides.min.js')}}"></script>
         <script>
             $(function () {
@@ -58,12 +59,13 @@
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a>
                             </li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/register') }}">Request Account</a></li>
                         @else
                             <li><a href="/users/{{ Auth::user()->id }}" >
                                 <img width="30px" height="20px" src="{{ Auth::user()->personal->image }}" alt=""> {{ Auth::user()->name }} </a>
                             @if(Auth::user()->isAdmin())
-                            <li><a href="#">Dashboard</a>
+                            <li><a href="/admin">Dashboard</a>
+                            <li><a href="/requests">Requests</a>
                             @endif
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                                

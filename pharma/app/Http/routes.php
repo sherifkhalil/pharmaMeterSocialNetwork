@@ -42,6 +42,19 @@
 
 
         Route::get('/admin', 'AdminController@index');
+        Route::get('/admin/users/delete/{id}', 'AdminController@delete');
+        Route::get('/admin/users/restore/{id}', 'AdminController@restore');
+        Route::get('/admin/users/generate', 'AdminController@generate');
+        Route::post('/admin/users/generate', 'AdminController@generate');
+
+        Route::get('/admin/requests/accept/{id}', 'AccountsController@accept');
+        Route::get('/admin/requests/reject/{id}', 'AccountsController@reject');
+
+        Route::post('/request', 'AccountsController@store');
+        Route::get('/requests', 'AccountsController@requests');
+        Route::get('/requests/accepted', 'AccountsController@accepted');
+        Route::get('/requests/accepted', 'AccountsController@accepted');
+
 
 	
 
@@ -49,3 +62,22 @@
 
  }); 
 
+
+
+// verification token resend form
+Route::get('verify/resend', [
+    'uses' => 'Auth\VerifyController@showResendForm',
+    'as' => 'verification.resend',
+]);
+
+// verification token resend action
+Route::post('verify/resend', [
+    'uses' => 'Auth\VerifyController@sendVerificationLinkEmail',
+    'as' => 'verification.resend.post',
+]);
+
+// verification message / user verification
+Route::get('verify/{token?}', [
+    'uses' => 'Auth\VerifyController@verify',
+    'as' => 'verification.verify',
+]);
