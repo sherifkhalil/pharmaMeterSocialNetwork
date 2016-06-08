@@ -24,11 +24,11 @@ class FeedcommentsController extends Controller
 			$feedcomment->content = $request->content;
 			$feedcomment->user_id = $user_id;
 			$feedcomment->feedback_id=$request->id;
-			 $feedcomment->no_ups = "0";
+			$feedcomment->no_ups = "0";
 			$feedcomment->save();
 			$image = $feedcomment->user->personal->image;
 			$uname = $feedcomment->user->name;
-			return [$feedcomment,$uname,$image,];
+			return [$feedcomment,$uname,$image];
 
 	}
 	 public function delete($id)
@@ -46,6 +46,32 @@ class FeedcommentsController extends Controller
     	
     	return back();
 
+    }
+
+    public function update( Request $request)
+    {
+    	
+    	// return $request;
+  		$comment = Feedcomment::find( $request->id);
+  		// return $comment;
+  		$user_id = Auth::user()->id;
+  		if($comment->user_id  == $user_id )
+  		{
+  			$content = $request->content;
+    	
+	    	$comment->content = $content;
+	    	$comment ->update();
+	    	$image = $comment->user->personal->image;
+			$uname = $comment->user->name;
+	    	return [$comment,$uname,$image];
+
+  		}
+  		else
+  		{
+
+  		}
+    	
+    	 
     }
 
     public function up(Request $request)
@@ -74,6 +100,12 @@ class FeedcommentsController extends Controller
 	  	}
 	  	else
 	  	{
+	  	
+	  		$up =Feedcommentup::where($conditions)->first();
+	  		$up->delete();
+	  		$comment = Feedcomment::find($comment_id);
+		   	$comment->no_ups -=1;
+		   	$comment->update();
 	  		return 0;
 	  	}
 	    
