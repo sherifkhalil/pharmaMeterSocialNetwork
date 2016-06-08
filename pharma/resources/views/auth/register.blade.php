@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? 'has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                         <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
+                         <div class="form-group {{ $errors->has('id_number') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">ID Number</label>
 
                             <div class="col-md-6">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
 
-                       <div class="form-group{{ $errors->has('certificate') ? ' has-error' : '' }}">
+                       <div class="form-group {{ $errors->has('certificate') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Certificate </label>
 
                             <div class="col-md-6">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('type') ? ' has-error' : '' }}">
                             <label class=" col-md-4 control-label ">Type: </label>
                                   <div class="col-md-6">
                                       <select  class="form-control" data-style="btn-primary" id="type" name="type">

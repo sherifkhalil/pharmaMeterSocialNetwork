@@ -63,7 +63,7 @@
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a>
                             </li>
-                            <li><a href="{{ url('/register') }}">Request Account</a></li>
+                            <li><a href="{{ url('/request') }}">Request Account</a></li>
                         @else
                             <li><a href="/users/{{ Auth::user()->id }}" >
                                 <img width="30px" height="20px" src="{{ Auth::user()->personal->image }}" alt=""> {{ Auth::user()->name }} </a>
@@ -147,9 +147,10 @@
 
                             </form>
                         </div>
-                        @unless(Auth::user()->isAdmin())                         
+                                                
                         <div class="blog-post" id="sub">
                             </br>
+                            @unless(Auth::user()->isAdmin()) 
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class= "add ">
                                     <h3> Top following to follow ?  </h3>
@@ -192,9 +193,11 @@
                                    @endforeach
                                @endif
                                <!--  <a class="twittbtn" href="#">See all users</a> -->
+                               
                             </div>
+                            @endunless
+                           
                         </div>
-                        @endunless
                         <!---//End-twitter-weight---->
                         <!---- start-tag-weight---->
                         <!-- <div class="b-tag-weight">

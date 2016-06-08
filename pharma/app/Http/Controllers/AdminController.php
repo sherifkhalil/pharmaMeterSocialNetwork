@@ -30,8 +30,8 @@ class AdminController extends Controller
 		if (isset($id)){
 			$user = User::withTrashed()->where('id', '=', $id)->first();
 			if ($user->deleted_at == null) {
-				// $personal = Personal::withTrashed()->where('user_id', '=', $user->id)->first();
-				// $personal->delete();
+				$personal = Personal::withTrashed()->where('user_id', '=', $user->id)->first();
+				$personal->delete();
 				$user->delete();
 				$errors = '';
 			}
@@ -79,7 +79,7 @@ class AdminController extends Controller
 			if($validator->fails())
 			{
 				$errors= $validator->messages();
-				return view('admin.generate',compact('errors'));
+				return view('requests.generate',compact('errors'));
 				
 			}
 			else{
@@ -90,7 +90,7 @@ class AdminController extends Controller
 					$id_number = $request->id_number;
 					// if (User::where('id_number', '=', $id_number)->exists()) {
 					// 	$error = 'This ID Number already exists';
-					//    return view('admin.generate', compact('error'));
+					//    return view('requests.generate', compact('error'));
 					// }
 				}
 				else {

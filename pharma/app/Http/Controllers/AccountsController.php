@@ -18,46 +18,49 @@ class AccountsController extends Controller
      public function store(Request $request)
     {
 
-    	$validator = Validator::make($request->all(),[
-			'name' => array( 'required', 'alpha_dash', 'max:200' ),
-			'email' => array( 'required', 'email','unique:users', 'unique:accounts', 'min:6', 'max:200' ),
-			'id_number' => array( 'unique:users', 'unique:accounts')
+	    	if ($request->isMethod('post')){
+    		$validator = Validator::make($request->all(),[
+					'name' => array( 'required', 'alpha_dash', 'max:200' ),
+					'email' => array( 'required', 'email','unique:users', 'unique:accounts', 'min:6', 'max:200' ),
+					'id_number' => array( 'unique:users', 'unique:accounts')
+	
+			]);
+			if($validator->fails())
+			{// validator dosn't work
+				$errors= $validator->messages();
+				return view('auth.register',compact('errors'));
+				// return back()->with('errors');
+				
+			}
+			else{
 
-		]);
-		if($validator->fails())
-		{// validator dosn't work
-			$errors= $validator->messages();
-			return view('auth.register',compact('errors'));
-			// return back()->with('errors');
-			
+				$account = new Account;
+				$account->name = $request->name;
+				$account->email = $request->email;
+				$account->id_number = $request->id_number;
+				$account->created_at = Carbon::now();
+				$account->updated_at = Carbon::now();
+		    	if (Input::hasFile('certificate') && Input::file('certificate')->isValid())
+		         {
+		            $imageName =  Carbon::now(). '.' . 
+		            $request->file('certificate')-> getClientOriginalExtension();
+		            $account->certificate = '/request/'.$imageName;
+		            $account->save();
+		            $request->file('certificate')->move(
+		            base_path() . '/public/request/', $imageName );
+		         }
+		         else
+		         {
+		         
+		            $imageName = "/profilepic/1.png";
+		            $account->certificate = $imageName;
+		            $account->save();
+		         }
+		         $message = 'Your Request Has Been Sent Successfully !';
+		         return view('auth.register',compact('message'));
+		    }
 		}
-		else{
-
-			$account = new Account;
-			$account->name = $request->name;
-			$account->email = $request->email;
-			$account->id_number = $request->id_number;
-			$account->created_at = Carbon::now();
-			$account->updated_at = Carbon::now();
-	    	if (Input::hasFile('certificate') && Input::file('certificate')->isValid())
-	         {
-	            $imageName =  Carbon::now(). '.' . 
-	            $request->file('certificate')-> getClientOriginalExtension();
-	            $account->certificate = '/request/'.$imageName;
-	            $account->save();
-	            $request->file('certificate')->move(
-	            base_path() . '/public/request/', $imageName );
-	         }
-	         else
-	         {
-	         
-	            $imageName = "/profilepic/1.png";
-	            $account->certificate = $imageName;
-	            $account->save();
-	         }
-	         $message = 'Your Request Has Been Sent Successfully !';
-	         return view('auth.register',compact('message'));
-	    }
+	    return view('auth.register');
     }
 
     public function requests()

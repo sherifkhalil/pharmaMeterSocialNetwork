@@ -69,6 +69,7 @@
 		Route::post('/postup/add/{post}', 'PostupsController@store');
 
 		Route::post('/request', 'AccountsController@store');
+		Route::get('/request', 'AccountsController@store');
 
 
 

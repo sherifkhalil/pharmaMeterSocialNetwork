@@ -12,7 +12,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Generate Account</div>
                 <div class="panel-body">
-                  <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/users/generate') }}" enctype="multipart/form-data">
+                  <form class="form-horizontal" role="form" method="POST" action="{{ Auth::guest() ? url('/request') : url('/admin/users/generate') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @if(isset($request['id']))
                         <input type="hidden" name="account_id" value="{{ $request['id'] ? $request['id'] : '' }}"></input>
@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? 'has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                         <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
+                         <div class="form-group {{ $errors->has('id_number') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">ID Number</label>
 
                             <div class="col-md-6">
@@ -57,11 +57,11 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input type="password" id="password" class="form-control" name="password" value="{{uniqid()}}"><input type="button" id="showPassword" value="show" class="button" />
+                                <input type="password" id="password" class="form-control" name="password" value="{{substr(uniqid(),7,13)}}"><input type="button" id="showPassword" value="show" class="button" />
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -71,27 +71,29 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('type') ? ' has-error' : '' }}">
                             <label class=" col-md-4 control-label ">Type </label>
                                   <div class="col-md-6">
-                                  @if(isset($request))
-	                                  @if($request['type'] )
-	                                  	<input type="text" value="{{$request['type']}}"></input>
-	                                  @endif
-	                              @else
-                                      <select  class="form-control" data-style="btn-primary" id="type" name="type">
+                                 @if(isset($request))
+                                      @if($request['type'] )
+                                        <input type="text" value="{{$request['type']}}"></input>
+                                      @else
+                                        <select  class="form-control" data-style="btn-primary" id="type" name="type">
                                      
                                           <option value="pharmacy-student">pharmacy-student</option>
                                           <option value="medicine-student">medicine-student</option>   
                                           <option selected value="phamacist">Phamacist</option>                              
                                           <option value="doctor">Doctor</option>                              
                                       </select>
+                                      @endif
+                                  
+                                   @endif
                                         @if ($errors->has('type'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('type') }}</strong>
                                             </span>
                                         @endif
-                                   @endif
+                                   
                                   </div>
                          </div>
 
