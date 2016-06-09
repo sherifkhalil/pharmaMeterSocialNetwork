@@ -27,10 +27,17 @@ $(document).ready(function(){
               // array.push('<button type="button" class="feedup" data-rowid="'+response['feedback']['id']+'">Up</button>');
                array.push('<span>'+response['count']+' ups </span></div>');
                array.push('<br><hr/>');
+<<<<<<< HEAD
                //array.push('<form><input type="hidden" name="_token" value="{{ csrf_token() }}"><div class="form-group col-md-4"><input class="form-control" type="text" name="content" class="form-control"/></div><div class="form-group"><input type="submit" class="btn btn-primary" value="add"/></div></form>');
                array.push('<form ><input type="hidden" name="_token" value="{{ csrf_token() }}"><div class="form-group col-md-4"><input  class="form-control" type="text" name="content" class="form-control" id="comment{{$feedback->id}}"/></div><div  class="form-group"><input type="submit" class="btn btn-primary feedcomment" value="Comment"  data-rowid="{{ $feedback->id }}" data-rowtok="{{ csrf_token() }}"/></div></form>');
                array.push('</div></div>');
                $(array.join('')).insertBefore('.feeds');
+=======
+               array.push('<form><input type="hidden" name="_token" value="{{ csrf_token() }}"><div class="form-group col-md-4"><input class="form-control" type="text" name="content" class="form-control"/></div><div class="form-group"><input type="submit" class="btn btn-primary" value="add"/></div></form>');
+               array.push('</div></div>');
+               
+                $(array.join('')).insertBefore('.feeds');
+>>>>>>> 95077f6debc60283289ef76958e58c7bcf6b1281
               /*  content.val('');*/
             },
             error:function(response){

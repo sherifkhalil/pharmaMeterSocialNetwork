@@ -78,7 +78,11 @@ $(function () {
                         $(".comm"+feedback_id).append('<input type="hidden" name="_token" value="{{ csrf_token() }}">');
                         $(".comm"+feedback_id).append('<input type="hidden" name="comment"  value="'+data[0]['id']+'" />');
                         $(".comm"+feedback_id).append('<br>');
+<<<<<<< HEAD
                         $(".comm"+feedback_id).append('<button class="btn btn-default comment_up" data-rowtok="'+_token+'" data-rowid="'+data[0]['id']+'" > <span class="glyphicon glyphicon-thumbs-up" id="data'+data[0]['id']+'" aria-hidden="true">'+data[0]['no_ups']+'</span></button>');                               
+=======
+                        $(".comm"+feedback_id).append('<button class="btn btn-default comment_up" data-rowtok="'+_token+'" data-rowid="'+data[0]['id']+'" > <span class="glyphicon glyphicon-thumbs-up" id="'+data[0]['id']+'" aria-hidden="true">'+data[0]['no_ups']+'</span></button>');                               
+>>>>>>> 95077f6debc60283289ef76958e58c7bcf6b1281
                         $(".comm"+feedback_id).append ('</form></div><br><br><hr>'); 
                         $(".comm"+feedback_id).append('<div class="formdiv'+data[0]['id']+' hide form1" ><form > <div class="form-group col-md-4"> <input  class="form-control" type="text" name="content" class="form-control" id="comment'+data[0]['id']+'" value="'+data[0]['content']+'"/> </div> <div  class="form-group "> <input type="submit" class="btn btn-primary feedcommentedit" value="Edit"  data-rowid="'+data[0]['id']+'" data-rowtok="'+_token+'"/> <input type="reset" class="btn btn-danger cancel" value="Cancel"/></div> </form>  </div> ');
 
@@ -150,7 +154,10 @@ $(function () {
                     {
                         if(data==1)
                         {
+<<<<<<< HEAD
                             
+=======
+>>>>>>> 95077f6debc60283289ef76958e58c7bcf6b1281
                            span=document.getElementById("data"+comment+"");
                            value=document.getElementById("data"+comment+"").innerText;
                            value=parseInt(value);

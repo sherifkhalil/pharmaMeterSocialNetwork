@@ -15,18 +15,45 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
+<<<<<<< HEAD
 
                     	<div class='form-group form-group-sm feeed'>
 
+=======
+<<<<<<< HEAD
+                    	<div class='form-group form-group-sm feeed'>
+=======
+
+                    	<div class='form-group form-group-sm ajax'>
+
+                    	<div class='form-group form-group-sm'>
+
+>>>>>>> 712238a00f3b5e5183fbfe75711ba26c08e32a71
+>>>>>>> 95077f6debc60283289ef76958e58c7bcf6b1281
 							@if(isset($feedbacks) && sizeof($feedbacks) >0)
                             <h3 id="title">Feedbacks</h3>
                         	@foreach($feedbacks as $feedback)
                         	<div class="blog-artical">
+<<<<<<< HEAD
 
 	                                <div class="alert alert-info feedback{{$feedback->id}}">
 
 
 
+=======
+<<<<<<< HEAD
+	                                <div class="alert alert-info feedback{{$feedback->id}}">
+=======
+
+
+	                                <div class="alert alert-info" >
+	                                	 
+	                                	 
+
+	                                <div class="alert alert-info feedback">
+
+>>>>>>> 712238a00f3b5e5183fbfe75711ba26c08e32a71
+>>>>>>> 95077f6debc60283289ef76958e58c7bcf6b1281
                                     	<img src="{{$feedback->user->personal->image}}" class="thumbnail" height="70" width="70" style="display: inline;">   
                                         <span><a href="">{{$feedback->user->name}}</a></span>
                                     	<span style="margin-left:15px;">{{$feedback->content}}</span>
@@ -37,8 +64,13 @@
                             @endif
                             @if(Auth::user()->id != $feedback->user->id)
                                     <button type="button" class="feedup" data-rowid="{{$feedback->id}}" >Up</button>
+<<<<<<< HEAD
 <!--                                     <button type="button" class="feeddown" data-rowid="{{$feedback->id}}" >Down</button>
  -->                            @endif            
+=======
+                                    <button type="button" class="feeddown" data-rowid="{{$feedback->id}}" >Down</button>
+                            @endif            
+>>>>>>> 95077f6debc60283289ef76958e58c7bcf6b1281
                                         <span class="ups{{$feedback->id}}">{{$feedback->feedbackups->count()}} ups </span>
                                     	</div>
 
@@ -93,7 +125,11 @@
                                         <!--fatma /feedcomment/{{$feedback->id}}/add-->
 
 
+<<<<<<< HEAD
                                        
+=======
+                                       <!--  <form  method='post' action = "/feedcomment/{{$feedback->id}}/add" > -->
+>>>>>>> 95077f6debc60283289ef76958e58c7bcf6b1281
 
 
                                          </div>

@@ -147,7 +147,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Jenssegers\Mongodb\MongodbServiceProvider::class,
+        // Jenssegers\Mongodb\MongodbServiceProvider::class,
 
 
         /*
@@ -157,6 +157,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+         Krucas\LaravelUserEmailVerification\UserEmailVerificationServiceProvider::class,
 
     ],
 
@@ -203,7 +205,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Moloquent' => Jenssegers\Mongodb\Model\View::class,
+        // 'Moloquent' => Jenssegers\Mongodb\Model\View::class,
 
 
     ],
