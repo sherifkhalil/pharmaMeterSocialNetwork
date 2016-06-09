@@ -73,14 +73,28 @@ class FeedbacksController extends Controller
 		{
 			#return Redirect::back()->with('error','you have already added your feedback');
 			#return Redirect::back()->withErrors(['msg', 'you have already added your feedback']);
-			$myfeedback = Feedback::where('id',$id )->first();
+/*			$myfeedback = Feedback::where('id',$id )->first();
 		    $count=$myfeedback->feedbackups->count();
 		    #return $count;
 		    $response = array(
 	            'count' => $count,
 	            'feedback_id'=>$id,
 	        );
-	       return response()->json($response);
+	       return response()->json($response);*/
+
+	    #$user = Auth::user();
+		$feedback_id=$id;
+		$down= Feedbackup::where('feedback_id',$feedback_id)->where('user_id',$user->id)->first();
+		$down->delete(); 
+	    $myfeedback = Feedback::where('id',$feedback_id)->first();
+	    $count=$myfeedback->feedbackups->count();
+	    #return $count;
+	    #return Redirect::back();
+	    $response = array(
+            'count' => $count,
+            'feedback_id'=>$feedback_id,
+        );
+       return response()->json($response);
 		}
 		
 	    $up = new Feedbackup;
@@ -116,4 +130,3 @@ class FeedbacksController extends Controller
 
 	}
 }
-
