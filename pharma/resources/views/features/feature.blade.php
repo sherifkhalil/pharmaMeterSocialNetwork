@@ -15,15 +15,22 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
+<<<<<<< HEAD
+                    	<div class='form-group form-group-sm feeed'>
+=======
 
                     	<div class='form-group form-group-sm ajax'>
 
                     	<div class='form-group form-group-sm'>
 
+>>>>>>> 712238a00f3b5e5183fbfe75711ba26c08e32a71
 							@if(isset($feedbacks) && sizeof($feedbacks) >0)
                             <h3 id="title">Feedbacks</h3>
                         	@foreach($feedbacks as $feedback)
                         	<div class="blog-artical">
+<<<<<<< HEAD
+	                                <div class="alert alert-info feedback{{$feedback->id}}">
+=======
 
 
 	                                <div class="alert alert-info" >
@@ -32,6 +39,7 @@
 
 	                                <div class="alert alert-info feedback">
 
+>>>>>>> 712238a00f3b5e5183fbfe75711ba26c08e32a71
                                     	<img src="{{$feedback->user->personal->image}}" class="thumbnail" height="70" width="70" style="display: inline;">   
                                         <span><a href="">{{$feedback->user->name}}</a></span>
                                     	<span style="margin-left:15px;">{{$feedback->content}}</span>
@@ -44,7 +52,7 @@
                                     <button type="button" class="feedup" data-rowid="{{$feedback->id}}" >Up</button>
                                     <button type="button" class="feeddown" data-rowid="{{$feedback->id}}" >Down</button>
                             @endif            
-                                        <span class="ups">{{$feedback->feedbackups->count()}} ups </span>
+                                        <span class="ups{{$feedback->id}}">{{$feedback->feedbackups->count()}} ups </span>
                                     	</div>
 
                                         <br>
@@ -109,11 +117,8 @@
                                                 </div>
                                                 
                                                 <div  class='form-group '>
-                                                    
 
-                                                        <input type='submit' class='btn btn-primary ' value='add'/>   
-
-                                                        <input type='submit' class='btn btn-primary feedcomment' value='Commet'  data-rowid="{{ $feedback->id }}" data-rowtok="{{ csrf_token() }}"/>   
+                                                        <input type='submit' class='btn btn-primary feedcomment' value='Comment'  data-rowid="{{ $feedback->id }}" data-rowtok="{{ csrf_token() }}"/>   
 
                                                 </div>
                                         </form>
@@ -128,7 +133,7 @@
 	                        @endif
 
                             <!--enas-->
-                            <div class="col-md-12 pull-left">
+                            <div class="col-md-12 pull-left feeds">
                                 <form >
                                     {!! csrf_field() !!}
                                     <div class='col-xs-12 col-md-12' >
